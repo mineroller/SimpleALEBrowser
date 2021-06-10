@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple ALE Browser", "Simple ALE Browser\Simple ALE Browser.csproj", "{DDDF3C70-EF5B-4F61-8378-96EA4C8AF84F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDDF3C70-EF5B-4F61-8378-96EA4C8AF84F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDDF3C70-EF5B-4F61-8378-96EA4C8AF84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDDF3C70-EF5B-4F61-8378-96EA4C8AF84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDDF3C70-EF5B-4F61-8378-96EA4C8AF84F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {23DDCEDC-13CD-4ECA-87C8-445DCDD0559F}
+	EndGlobalSection
+EndGlobal
