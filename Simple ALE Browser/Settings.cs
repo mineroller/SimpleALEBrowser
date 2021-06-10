@@ -6,7 +6,9 @@ namespace Simple_ALE_Browser
     public partial class frmSettings : Form
     {
         public bool SettingSaved { get; set; }
-        
+
+        Program.VUStringHelper.SimplerAES aes = new Program.VUStringHelper.SimplerAES();
+
         public frmSettings()
         {
             InitializeComponent();
@@ -35,7 +37,7 @@ namespace Simple_ALE_Browser
             txtInstanceName.Text = Properties.Settings.Default.InstanceName;
             txtLogin.Text = Properties.Settings.Default.Login;
             txtDatabaseName.Text = Properties.Settings.Default.DatabaseName;
-            txtPassword.Text = Program.VUStringHelper.Decode(Properties.Settings.Default.Password);
+            txtPassword.Text = aes.Decrypt(Properties.Settings.Default.Password);
         }
 
         private void setDefaultSettings()
@@ -43,7 +45,7 @@ namespace Simple_ALE_Browser
             Properties.Settings.Default.ServerName = "IVALEV";
             Properties.Settings.Default.InstanceName = "SQLEXPRESS";
             Properties.Settings.Default.DatabaseName = "IV_ALEV";
-            Properties.Settings.Default.Password = Program.VUStringHelper.Encode("1q2w3e4r!");
+            Properties.Settings.Default.Password = aes.Encrypt("1q2w3e4r!");
             Properties.Settings.Default.Login = "ivaudituser";            
             Properties.Settings.Default.Save();
         }
@@ -54,7 +56,7 @@ namespace Simple_ALE_Browser
             Properties.Settings.Default.InstanceName = txtInstanceName.Text;
             Properties.Settings.Default.Login = txtLogin.Text;
             Properties.Settings.Default.DatabaseName = txtDatabaseName.Text;
-            Properties.Settings.Default.Password = Program.VUStringHelper.Encode(txtPassword.Text);
+            Properties.Settings.Default.Password = aes.Encrypt(txtPassword.Text);
 
             SettingSaved = true;
             this.DialogResult = DialogResult.OK;

@@ -38,10 +38,10 @@ namespace Simple_ALE_Browser
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.btnQueryUser = new System.Windows.Forms.Button();
-            this.dpkTodate = new System.Windows.Forms.DateTimePicker();
+            this.dpkToDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dpkFromdate = new System.Windows.Forms.DateTimePicker();
+            this.dpkFromDate = new System.Windows.Forms.DateTimePicker();
             this.cmbUserList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -61,6 +61,10 @@ namespace Simple_ALE_Browser
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblDbRows = new System.Windows.Forms.Label();
             this.lblTargetServer = new System.Windows.Forms.Label();
+            this.dpkFromTime = new System.Windows.Forms.DateTimePicker();
+            this.dpkToTime = new System.Windows.Forms.DateTimePicker();
+            this.lblTempHolder2 = new System.Windows.Forms.Label();
+            this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvUserAuditResult)).BeginInit();
@@ -85,14 +89,17 @@ namespace Simple_ALE_Browser
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lblTempHolder2);
+            this.tabPage1.Controls.Add(this.dpkToTime);
+            this.tabPage1.Controls.Add(this.dpkFromTime);
             this.tabPage1.Controls.Add(this.btnGetUsers);
             this.tabPage1.Controls.Add(this.lblTempHolder);
             this.tabPage1.Controls.Add(this.olvUserAuditResult);
             this.tabPage1.Controls.Add(this.btnQueryUser);
-            this.tabPage1.Controls.Add(this.dpkTodate);
+            this.tabPage1.Controls.Add(this.dpkToDate);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.dpkFromdate);
+            this.tabPage1.Controls.Add(this.dpkFromDate);
             this.tabPage1.Controls.Add(this.cmbUserList);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
@@ -107,7 +114,7 @@ namespace Simple_ALE_Browser
             // btnGetUsers
             // 
             this.btnGetUsers.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetUsers.Location = new System.Drawing.Point(43, 19);
+            this.btnGetUsers.Location = new System.Drawing.Point(18, 15);
             this.btnGetUsers.Name = "btnGetUsers";
             this.btnGetUsers.Size = new System.Drawing.Size(129, 98);
             this.btnGetUsers.TabIndex = 9;
@@ -118,7 +125,7 @@ namespace Simple_ALE_Browser
             // lblTempHolder
             // 
             this.lblTempHolder.AutoSize = true;
-            this.lblTempHolder.Location = new System.Drawing.Point(775, 111);
+            this.lblTempHolder.Location = new System.Drawing.Point(288, 159);
             this.lblTempHolder.Name = "lblTempHolder";
             this.lblTempHolder.Size = new System.Drawing.Size(43, 17);
             this.lblTempHolder.TabIndex = 8;
@@ -127,19 +134,24 @@ namespace Simple_ALE_Browser
             // olvUserAuditResult
             // 
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn1);
+            this.olvUserAuditResult.AllColumns.Add(this.olvColumn4);
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn2);
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn3);
             this.olvUserAuditResult.CellEditUseWholeCell = false;
             this.olvUserAuditResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn1,
+            this.olvColumn4,
             this.olvColumn2,
             this.olvColumn3});
             this.olvUserAuditResult.Cursor = System.Windows.Forms.Cursors.Default;
+            this.olvUserAuditResult.FullRowSelect = true;
             this.olvUserAuditResult.HideSelection = false;
-            this.olvUserAuditResult.Location = new System.Drawing.Point(6, 143);
+            this.olvUserAuditResult.Location = new System.Drawing.Point(6, 196);
             this.olvUserAuditResult.Name = "olvUserAuditResult";
-            this.olvUserAuditResult.Size = new System.Drawing.Size(1280, 548);
+            this.olvUserAuditResult.ShowGroups = false;
+            this.olvUserAuditResult.Size = new System.Drawing.Size(1380, 498);
             this.olvUserAuditResult.TabIndex = 7;
+            this.olvUserAuditResult.UseAlternatingBackColors = true;
             this.olvUserAuditResult.UseCompatibleStateImageBehavior = false;
             this.olvUserAuditResult.View = System.Windows.Forms.View.Details;
             // 
@@ -164,57 +176,58 @@ namespace Simple_ALE_Browser
             // btnQueryUser
             // 
             this.btnQueryUser.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQueryUser.Location = new System.Drawing.Point(735, 8);
+            this.btnQueryUser.Location = new System.Drawing.Point(1093, 62);
             this.btnQueryUser.Name = "btnQueryUser";
-            this.btnQueryUser.Size = new System.Drawing.Size(236, 76);
+            this.btnQueryUser.Size = new System.Drawing.Size(236, 51);
             this.btnQueryUser.TabIndex = 6;
             this.btnQueryUser.Text = "Find User Activity";
             this.btnQueryUser.UseVisualStyleBackColor = true;
+            this.btnQueryUser.Click += new System.EventHandler(this.btnQueryUser_Click);
             // 
-            // dpkTodate
+            // dpkToDate
             // 
-            this.dpkTodate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpkTodate.Location = new System.Drawing.Point(385, 93);
-            this.dpkTodate.Name = "dpkTodate";
-            this.dpkTodate.Size = new System.Drawing.Size(344, 35);
-            this.dpkTodate.TabIndex = 5;
+            this.dpkToDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpkToDate.Location = new System.Drawing.Point(709, 55);
+            this.dpkToDate.Name = "dpkToDate";
+            this.dpkToDate.Size = new System.Drawing.Size(344, 29);
+            this.dpkToDate.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(258, 93);
+            this.label3.Location = new System.Drawing.Point(672, 52);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 25);
+            this.label3.Size = new System.Drawing.Size(38, 25);
             this.label3.TabIndex = 4;
-            this.label3.Text = "TO this date:";
+            this.label3.Text = "To:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(228, 52);
+            this.label2.Location = new System.Drawing.Point(221, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 25);
+            this.label2.Size = new System.Drawing.Size(64, 25);
             this.label2.TabIndex = 3;
-            this.label2.Text = "FROM this date:";
+            this.label2.Text = "From:";
             // 
-            // dpkFromdate
+            // dpkFromDate
             // 
-            this.dpkFromdate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpkFromdate.Location = new System.Drawing.Point(385, 52);
-            this.dpkFromdate.Name = "dpkFromdate";
-            this.dpkFromdate.Size = new System.Drawing.Size(344, 35);
-            this.dpkFromdate.TabIndex = 2;
+            this.dpkFromDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpkFromDate.Location = new System.Drawing.Point(291, 55);
+            this.dpkFromDate.Name = "dpkFromDate";
+            this.dpkFromDate.Size = new System.Drawing.Size(344, 29);
+            this.dpkFromDate.TabIndex = 2;
             // 
             // cmbUserList
             // 
             this.cmbUserList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbUserList.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbUserList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUserList.FormattingEnabled = true;
-            this.cmbUserList.Location = new System.Drawing.Point(385, 8);
+            this.cmbUserList.Location = new System.Drawing.Point(291, 15);
             this.cmbUserList.Name = "cmbUserList";
-            this.cmbUserList.Size = new System.Drawing.Size(344, 38);
+            this.cmbUserList.Size = new System.Drawing.Size(344, 29);
             this.cmbUserList.Sorted = true;
             this.cmbUserList.TabIndex = 1;
             // 
@@ -222,7 +235,7 @@ namespace Simple_ALE_Browser
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(264, 15);
+            this.label1.Location = new System.Drawing.Point(170, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 25);
             this.label1.TabIndex = 0;
@@ -265,12 +278,12 @@ namespace Simple_ALE_Browser
             this.lblStatusDisp.BackColor = System.Drawing.Color.Black;
             this.lblStatusDisp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStatusDisp.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatusDisp.ForeColor = System.Drawing.Color.SpringGreen;
+            this.lblStatusDisp.ForeColor = System.Drawing.Color.Red;
             this.lblStatusDisp.Location = new System.Drawing.Point(6, 25);
             this.lblStatusDisp.Name = "lblStatusDisp";
             this.lblStatusDisp.Size = new System.Drawing.Size(545, 51);
             this.lblStatusDisp.TabIndex = 0;
-            this.lblStatusDisp.Text = "Connection Information";
+            this.lblStatusDisp.Text = "[Not Connected]";
             this.lblStatusDisp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // menuStrip1
@@ -326,6 +339,7 @@ namespace Simple_ALE_Browser
             this.aboutSimpleAuditLogViewerToolStripMenuItem.Name = "aboutSimpleAuditLogViewerToolStripMenuItem";
             this.aboutSimpleAuditLogViewerToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.aboutSimpleAuditLogViewerToolStripMenuItem.Text = "About Simple Audit Log Viewer...";
+            this.aboutSimpleAuditLogViewerToolStripMenuItem.Click += new System.EventHandler(this.aboutSimpleAuditLogViewerToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -390,6 +404,41 @@ namespace Simple_ALE_Browser
             this.lblTargetServer.Text = "Target Server";
             this.lblTargetServer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // dpkFromTime
+            // 
+            this.dpkFromTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpkFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dpkFromTime.Location = new System.Drawing.Point(291, 90);
+            this.dpkFromTime.Name = "dpkFromTime";
+            this.dpkFromTime.ShowUpDown = true;
+            this.dpkFromTime.Size = new System.Drawing.Size(344, 29);
+            this.dpkFromTime.TabIndex = 10;
+            // 
+            // dpkToTime
+            // 
+            this.dpkToTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpkToTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dpkToTime.Location = new System.Drawing.Point(709, 90);
+            this.dpkToTime.Name = "dpkToTime";
+            this.dpkToTime.ShowUpDown = true;
+            this.dpkToTime.Size = new System.Drawing.Size(344, 29);
+            this.dpkToTime.TabIndex = 11;
+            // 
+            // lblTempHolder2
+            // 
+            this.lblTempHolder2.AutoSize = true;
+            this.lblTempHolder2.Location = new System.Drawing.Point(724, 150);
+            this.lblTempHolder2.Name = "lblTempHolder2";
+            this.lblTempHolder2.Size = new System.Drawing.Size(43, 17);
+            this.lblTempHolder2.TabIndex = 12;
+            this.lblTempHolder2.Text = "label4";
+            // 
+            // olvColumn4
+            // 
+            this.olvColumn4.AspectName = "UserName";
+            this.olvColumn4.Text = "User ID";
+            this.olvColumn4.Width = 142;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -429,10 +478,10 @@ namespace Simple_ALE_Browser
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox grpConnectInfo;
         private System.Windows.Forms.Button btnQueryUser;
-        private System.Windows.Forms.DateTimePicker dpkTodate;
+        private System.Windows.Forms.DateTimePicker dpkToDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dpkFromdate;
+        private System.Windows.Forms.DateTimePicker dpkFromDate;
         private System.Windows.Forms.ComboBox cmbUserList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage3;
@@ -456,6 +505,10 @@ namespace Simple_ALE_Browser
         private System.Windows.Forms.Label lblTempHolder;
         private System.Windows.Forms.Label lblTargetServer;
         private System.Windows.Forms.Button btnGetUsers;
+        private System.Windows.Forms.DateTimePicker dpkToTime;
+        private System.Windows.Forms.DateTimePicker dpkFromTime;
+        private System.Windows.Forms.Label lblTempHolder2;
+        private BrightIdeasSoftware.OLVColumn olvColumn4;
     }
 }
 

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Security.Cryptography;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Simple_ALE_Browser
 {
@@ -25,60 +22,68 @@ namespace Simple_ALE_Browser
         public static class VUStringHelper
         {
 
-            /// Encodes string that can only be accessible from this machine
+            // SimplerAES from https://stackoverflow.com/a/5518092
 
-            public static string Encode(string text)
+            public class SimplerAES
             {
-                return Convert.ToBase64String(
-                    ProtectedData.Protect(
-                        Encoding.Unicode.GetBytes(text), null, DataProtectionScope.LocalMachine));
-            }
+                // Generated from www.random.org
 
-            /// Decodes the encrypted string, only accessible from this machine
+                private static byte[] key = { 86, 109, 109, 186, 43, 36, 71, 167, 241, 208, 156, 69, 130, 214, 48, 196, 77, 125, 121, 56, 231, 196, 120, 223, 254, 222, 11, 155, 38, 174, 154, 68 };
+                private static byte[] vector = { 252, 64, 31, 74, 254, 45, 244, 96, 229, 39, 217, 26, 7, 14, 86, 22 };
+                
+                private ICryptoTransform encryptor, decryptor;
+                private UTF8Encoding encoder;
 
-            public static string Decode(string text)
-            {
-                return Encoding.Unicode.GetString(
-                        ProtectedData.Unprotect(
-                            Convert.FromBase64String(text), null, DataProtectionScope.LocalMachine));
-            }
+                public SimplerAES()
+                {
+                    RijndaelManaged rm = new RijndaelManaged();
+                    encryptor = rm.CreateEncryptor(key, vector);
+                    decryptor = rm.CreateDecryptor(key, vector);
+                    encoder = new UTF8Encoding();
+                }
 
-            public static string EncBase64(string text)
-            {
-                /// Grabs username and password from setting, decode it, and prepare for Base64 encoding
-                byte[] _text2byte = Encoding.UTF8.GetBytes(text);
-                string base64_text = Convert.ToBase64String(_text2byte);
+                public string Encrypt(string unencrypted)
+                {
+                    return Convert.ToBase64String(Encrypt(encoder.GetBytes(unencrypted)));
+                }
 
-                return base64_text;
-            }
+                public string Decrypt(string encrypted)
+                {
+                    return encoder.GetString(Decrypt(Convert.FromBase64String(encrypted)));
+                }
 
-            /// IP Address Validator. From https://stackoverflow.com/a/29942932
+                public byte[] Encrypt(byte[] buffer)
+                {
+                    return Transform(buffer, encryptor);
+                }
 
-            public static Boolean ValidateIP(string address)
-            {
-                /// Split string by ".", check that array length is 4
-                string[] ipv4octets = address.Split('.');
-                if (ipv4octets.Length != 4)
-                    return false;
+                public byte[] Decrypt(byte[] buffer)
+                {
+                    return Transform(buffer, decryptor);
+                }
 
-                /// Check each substring checking that parses to byte
-                byte obyte = 0;
-                foreach (string singleOctet in ipv4octets)
-                    if (!byte.TryParse(singleOctet, out obyte))
-                        return false;
-
-                return true;
+                protected byte[] Transform(byte[] buffer, ICryptoTransform transform)
+                {
+                    MemoryStream stream = new MemoryStream();
+                    using (CryptoStream cs = new CryptoStream(stream, transform, CryptoStreamMode.Write))
+                    {
+                        cs.Write(buffer, 0, buffer.Length);
+                    }
+                    return stream.ToArray();
+                }
             }
 
             public static string GetConnStr()
             {
-                // string _connstr = @"Server=IVALEV\SQLEXPRESS; Database=IV_ALEV; User Id=ivaudituser; Password=1q2w3e4r!;";
+
+                SimplerAES aes = new SimplerAES();
+                
                 string _connstr =
                     "Server=" + Properties.Settings.Default.ServerName +
                     @"\" + Properties.Settings.Default.InstanceName + ";" +
                     "Database=" + Properties.Settings.Default.DatabaseName + ";" +
                     "User Id=" + Properties.Settings.Default.Login + ";" +
-                    "Password=" + Decode(Properties.Settings.Default.Password) + ";";
+                    "Password=" + aes.Decrypt(Properties.Settings.Default.Password) + ";";
                 return _connstr;
             }
           

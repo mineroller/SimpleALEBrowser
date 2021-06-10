@@ -63,6 +63,26 @@ namespace Simple_ALE_Browser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap About_Me {
+            get {
+                object obj = ResourceManager.GetObject("About_Me", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LegoMan_withBaby {
+            get {
+                object obj = ResourceManager.GetObject("LegoMan_withBaby", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Mini1 {
             get {
                 object obj = ResourceManager.GetObject("Mini1", resourceCulture);
