@@ -27,7 +27,7 @@ namespace Simple_ALE_Browser
             dpkFromTime.Enabled = false;
             dpkToDate.Enabled = false;
             dpkToTime.Enabled = false;
-            lblSqlServerDetails.Text = "[Not Connected]";            
+            lblSqlServerDetail1.Text = "[Not Connected]";            
 
             // If setting is not ready, disable connect button
 
@@ -59,8 +59,7 @@ namespace Simple_ALE_Browser
         private void btnConnectSQL_Click(object sender, EventArgs e)
         {
             
-            string alev_cs = Program.VUStringHelper.GetConnStr();
-            string sqlver = "";
+            string alev_cs = Program.VUStringHelper.GetConnStr();            
             int alev_rows = 0;            
             
             try
@@ -68,7 +67,8 @@ namespace Simple_ALE_Browser
                 using (SqlConnection alevconn = new SqlConnection(alev_cs))
                 {
                     alevconn.Open();
-                  
+
+                    StringBuilder result_version = new StringBuilder();
                     string query_initver = "SELECT @@VERSION";                    
                     using (SqlCommand alevcmd = new SqlCommand(query_initver, alevconn))
                     {
@@ -76,9 +76,20 @@ namespace Simple_ALE_Browser
                         {
                             while (alevreader.Read())
                             {
-                                sqlver = alevreader.GetString(0);
+                                result_version.Append(alevreader.GetString(0));
                             }
-                            lblSqlServerDetails.Text = sqlver;
+
+                            string sqlver_long = result_version.ToString();
+
+                            string[] sqlver_array = sqlver_long.Split(
+                                new[] { "\n\t", "\n" }, StringSplitOptions.None);
+
+                            lblSqlServerDetail1.Text = sqlver_array[0];
+                            lblSqlServerDetail2.Text = sqlver_array[3];
+
+                            toolStripStatusLabel1.Text = sqlver_array[0];
+                            toolStripStatusLabel2.Text = sqlver_array[3];
+                            
                             groupBox1.Enabled = true;
                         }
                     }

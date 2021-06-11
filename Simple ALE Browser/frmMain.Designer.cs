@@ -31,10 +31,14 @@ namespace Simple_ALE_Browser
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblTempHolder2 = new System.Windows.Forms.Label();
+            this.dpkToTime = new System.Windows.Forms.DateTimePicker();
+            this.dpkFromTime = new System.Windows.Forms.DateTimePicker();
             this.btnGetUsers = new System.Windows.Forms.Button();
             this.lblTempHolder = new System.Windows.Forms.Label();
             this.olvUserAuditResult = new BrightIdeasSoftware.ObjectListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.btnQueryUser = new System.Windows.Forms.Button();
@@ -56,15 +60,18 @@ namespace Simple_ALE_Browser
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutSimpleAuditLogViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblSqlServerDetails = new System.Windows.Forms.Label();
+            this.lblSqlServerDetail2 = new System.Windows.Forms.Label();
+            this.lblSqlServerDetail1 = new System.Windows.Forms.Label();
             this.btnConnectSQL = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblOldestRow = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.lblDbRows = new System.Windows.Forms.Label();
             this.lblTargetServer = new System.Windows.Forms.Label();
-            this.dpkFromTime = new System.Windows.Forms.DateTimePicker();
-            this.dpkToTime = new System.Windows.Forms.DateTimePicker();
-            this.lblTempHolder2 = new System.Windows.Forms.Label();
-            this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvUserAuditResult)).BeginInit();
@@ -72,6 +79,7 @@ namespace Simple_ALE_Browser
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -84,7 +92,7 @@ namespace Simple_ALE_Browser
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1400, 729);
+            this.tabControl1.Size = new System.Drawing.Size(1400, 716);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -106,10 +114,39 @@ namespace Simple_ALE_Browser
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage1.Size = new System.Drawing.Size(1392, 699);
+            this.tabPage1.Size = new System.Drawing.Size(1392, 686);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "User Audit";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lblTempHolder2
+            // 
+            this.lblTempHolder2.AutoSize = true;
+            this.lblTempHolder2.Location = new System.Drawing.Point(706, 27);
+            this.lblTempHolder2.Name = "lblTempHolder2";
+            this.lblTempHolder2.Size = new System.Drawing.Size(43, 17);
+            this.lblTempHolder2.TabIndex = 12;
+            this.lblTempHolder2.Text = "label4";
+            // 
+            // dpkToTime
+            // 
+            this.dpkToTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpkToTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dpkToTime.Location = new System.Drawing.Point(709, 90);
+            this.dpkToTime.Name = "dpkToTime";
+            this.dpkToTime.ShowUpDown = true;
+            this.dpkToTime.Size = new System.Drawing.Size(344, 29);
+            this.dpkToTime.TabIndex = 11;
+            // 
+            // dpkFromTime
+            // 
+            this.dpkFromTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpkFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dpkFromTime.Location = new System.Drawing.Point(291, 90);
+            this.dpkFromTime.Name = "dpkFromTime";
+            this.dpkFromTime.ShowUpDown = true;
+            this.dpkFromTime.Size = new System.Drawing.Size(344, 29);
+            this.dpkFromTime.TabIndex = 10;
             // 
             // btnGetUsers
             // 
@@ -125,7 +162,7 @@ namespace Simple_ALE_Browser
             // lblTempHolder
             // 
             this.lblTempHolder.AutoSize = true;
-            this.lblTempHolder.Location = new System.Drawing.Point(288, 159);
+            this.lblTempHolder.Location = new System.Drawing.Point(706, 5);
             this.lblTempHolder.Name = "lblTempHolder";
             this.lblTempHolder.Size = new System.Drawing.Size(43, 17);
             this.lblTempHolder.TabIndex = 8;
@@ -146,10 +183,10 @@ namespace Simple_ALE_Browser
             this.olvUserAuditResult.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvUserAuditResult.FullRowSelect = true;
             this.olvUserAuditResult.HideSelection = false;
-            this.olvUserAuditResult.Location = new System.Drawing.Point(6, 196);
+            this.olvUserAuditResult.Location = new System.Drawing.Point(6, 125);
             this.olvUserAuditResult.Name = "olvUserAuditResult";
             this.olvUserAuditResult.ShowGroups = false;
-            this.olvUserAuditResult.Size = new System.Drawing.Size(1380, 498);
+            this.olvUserAuditResult.Size = new System.Drawing.Size(1380, 569);
             this.olvUserAuditResult.TabIndex = 7;
             this.olvUserAuditResult.UseAlternatingBackColors = true;
             this.olvUserAuditResult.UseCompatibleStateImageBehavior = false;
@@ -160,6 +197,12 @@ namespace Simple_ALE_Browser
             this.olvColumn1.AspectName = "ActionDateLocal";
             this.olvColumn1.Text = "Local Time";
             this.olvColumn1.Width = 162;
+            // 
+            // olvColumn4
+            // 
+            this.olvColumn4.AspectName = "UserName";
+            this.olvColumn4.Text = "User ID";
+            this.olvColumn4.Width = 142;
             // 
             // olvColumn2
             // 
@@ -247,7 +290,7 @@ namespace Simple_ALE_Browser
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage2.Size = new System.Drawing.Size(1392, 699);
+            this.tabPage2.Size = new System.Drawing.Size(1392, 649);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Workstation Audit";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -256,7 +299,7 @@ namespace Simple_ALE_Browser
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1392, 699);
+            this.tabPage3.Size = new System.Drawing.Size(1392, 649);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Event Audit";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -264,11 +307,11 @@ namespace Simple_ALE_Browser
             // grpConnectInfo
             // 
             this.grpConnectInfo.Controls.Add(this.lblStatusDisp);
-            this.grpConnectInfo.Location = new System.Drawing.Point(855, 29);
+            this.grpConnectInfo.Location = new System.Drawing.Point(944, 29);
             this.grpConnectInfo.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.grpConnectInfo.Name = "grpConnectInfo";
             this.grpConnectInfo.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.grpConnectInfo.Size = new System.Drawing.Size(557, 81);
+            this.grpConnectInfo.Size = new System.Drawing.Size(468, 81);
             this.grpConnectInfo.TabIndex = 1;
             this.grpConnectInfo.TabStop = false;
             this.grpConnectInfo.Text = "Query and Status";
@@ -281,7 +324,7 @@ namespace Simple_ALE_Browser
             this.lblStatusDisp.ForeColor = System.Drawing.Color.Red;
             this.lblStatusDisp.Location = new System.Drawing.Point(6, 25);
             this.lblStatusDisp.Name = "lblStatusDisp";
-            this.lblStatusDisp.Size = new System.Drawing.Size(545, 51);
+            this.lblStatusDisp.Size = new System.Drawing.Size(452, 51);
             this.lblStatusDisp.TabIndex = 0;
             this.lblStatusDisp.Text = "[Not Connected]";
             this.lblStatusDisp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -343,7 +386,8 @@ namespace Simple_ALE_Browser
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblSqlServerDetails);
+            this.groupBox1.Controls.Add(this.lblSqlServerDetail2);
+            this.groupBox1.Controls.Add(this.lblSqlServerDetail1);
             this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(205, 29);
             this.groupBox1.Name = "groupBox1";
@@ -352,14 +396,23 @@ namespace Simple_ALE_Browser
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Server Information";
             // 
-            // lblSqlServerDetails
+            // lblSqlServerDetail2
             // 
-            this.lblSqlServerDetails.Location = new System.Drawing.Point(7, 23);
-            this.lblSqlServerDetails.Name = "lblSqlServerDetails";
-            this.lblSqlServerDetails.Size = new System.Drawing.Size(344, 46);
-            this.lblSqlServerDetails.TabIndex = 0;
-            this.lblSqlServerDetails.Text = "[Not Connected]";
-            this.lblSqlServerDetails.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSqlServerDetail2.Location = new System.Drawing.Point(7, 49);
+            this.lblSqlServerDetail2.Name = "lblSqlServerDetail2";
+            this.lblSqlServerDetail2.Size = new System.Drawing.Size(344, 23);
+            this.lblSqlServerDetail2.TabIndex = 1;
+            this.lblSqlServerDetail2.Text = "[Not Connected]";
+            this.lblSqlServerDetail2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSqlServerDetail1
+            // 
+            this.lblSqlServerDetail1.Location = new System.Drawing.Point(7, 23);
+            this.lblSqlServerDetail1.Name = "lblSqlServerDetail1";
+            this.lblSqlServerDetail1.Size = new System.Drawing.Size(344, 23);
+            this.lblSqlServerDetail1.TabIndex = 0;
+            this.lblSqlServerDetail1.Text = "[Not Connected]";
+            this.lblSqlServerDetail1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnConnectSQL
             // 
@@ -376,20 +429,52 @@ namespace Simple_ALE_Browser
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblOldestRow);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.lblDbRows);
             this.groupBox2.Enabled = false;
-            this.groupBox2.Location = new System.Drawing.Point(568, 27);
+            this.groupBox2.Location = new System.Drawing.Point(568, 29);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(281, 81);
+            this.groupBox2.Size = new System.Drawing.Size(370, 81);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Database Information";
             // 
+            // lblOldestRow
+            // 
+            this.lblOldestRow.Location = new System.Drawing.Point(97, 47);
+            this.lblOldestRow.Name = "lblOldestRow";
+            this.lblOldestRow.Size = new System.Drawing.Size(267, 26);
+            this.lblOldestRow.TabIndex = 3;
+            this.lblOldestRow.Text = "[Not Connected]";
+            this.lblOldestRow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(85, 17);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Oldest Data:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(33, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 17);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "DB Size:";
+            // 
             // lblDbRows
             // 
-            this.lblDbRows.Location = new System.Drawing.Point(7, 23);
+            this.lblDbRows.Location = new System.Drawing.Point(97, 20);
             this.lblDbRows.Name = "lblDbRows";
-            this.lblDbRows.Size = new System.Drawing.Size(268, 46);
+            this.lblDbRows.Size = new System.Drawing.Size(267, 26);
             this.lblDbRows.TabIndex = 0;
             this.lblDbRows.Text = "[Not Connected]";
             this.lblDbRows.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -404,46 +489,35 @@ namespace Simple_ALE_Browser
             this.lblTargetServer.Text = "Target Server";
             this.lblTargetServer.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // dpkFromTime
+            // statusStrip1
             // 
-            this.dpkFromTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpkFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dpkFromTime.Location = new System.Drawing.Point(291, 90);
-            this.dpkFromTime.Name = "dpkFromTime";
-            this.dpkFromTime.ShowUpDown = true;
-            this.dpkFromTime.Size = new System.Drawing.Size(344, 29);
-            this.dpkFromTime.TabIndex = 10;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 839);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1424, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // dpkToTime
+            // toolStripStatusLabel1
             // 
-            this.dpkToTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpkToTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dpkToTime.Location = new System.Drawing.Point(709, 90);
-            this.dpkToTime.Name = "dpkToTime";
-            this.dpkToTime.ShowUpDown = true;
-            this.dpkToTime.Size = new System.Drawing.Size(344, 29);
-            this.dpkToTime.TabIndex = 11;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(121, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
-            // lblTempHolder2
+            // toolStripStatusLabel2
             // 
-            this.lblTempHolder2.AutoSize = true;
-            this.lblTempHolder2.Location = new System.Drawing.Point(724, 150);
-            this.lblTempHolder2.Name = "lblTempHolder2";
-            this.lblTempHolder2.Size = new System.Drawing.Size(43, 17);
-            this.lblTempHolder2.TabIndex = 12;
-            this.lblTempHolder2.Text = "label4";
-            // 
-            // olvColumn4
-            // 
-            this.olvColumn4.AspectName = "UserName";
-            this.olvColumn4.Text = "User ID";
-            this.olvColumn4.Width = 142;
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(121, 17);
+            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1424, 861);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lblTargetServer);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnConnectSQL);
@@ -466,6 +540,9 @@ namespace Simple_ALE_Browser
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -497,7 +574,7 @@ namespace Simple_ALE_Browser
         private BrightIdeasSoftware.OLVColumn olvColumn1;
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private BrightIdeasSoftware.OLVColumn olvColumn3;
-        private System.Windows.Forms.Label lblSqlServerDetails;
+        private System.Windows.Forms.Label lblSqlServerDetail1;
         private System.Windows.Forms.ToolStripMenuItem configureSQLConnectionToolStripMenuItem;
         private System.Windows.Forms.Button btnConnectSQL;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -509,6 +586,13 @@ namespace Simple_ALE_Browser
         private System.Windows.Forms.DateTimePicker dpkFromTime;
         private System.Windows.Forms.Label lblTempHolder2;
         private BrightIdeasSoftware.OLVColumn olvColumn4;
+        private System.Windows.Forms.Label lblOldestRow;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblSqlServerDetail2;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }
 
