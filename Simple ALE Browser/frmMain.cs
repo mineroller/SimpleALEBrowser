@@ -56,17 +56,21 @@ namespace Simple_ALE_Browser
 
         }
 
-        private void btnConnectSQL_Click(object sender, EventArgs e)
+        private async void btnConnectSQL_Click(object sender, EventArgs e)
         {
+
             
             string alev_cs = Program.VUStringHelper.GetConnStr();            
             int alev_rows = 0;            
             
             try
             {
+                btnConnectSQL.Text = "Connecting...";
+                btnConnectSQL.Enabled = false;
+
                 using (SqlConnection alevconn = new SqlConnection(alev_cs))
                 {
-                    alevconn.Open();
+                    await alevconn.OpenAsync();
 
                     StringBuilder result_version = new StringBuilder();
                     string query_initver = "SELECT @@VERSION";                    
@@ -74,7 +78,7 @@ namespace Simple_ALE_Browser
                     {
                         using (SqlDataReader alevreader = alevcmd.ExecuteReader())
                         {
-                            while (alevreader.Read())
+                            while (await alevreader.ReadAsync())
                             {
                                 result_version.Append(alevreader.GetString(0));
                             }
@@ -99,7 +103,7 @@ namespace Simple_ALE_Browser
                     {
                         using (SqlDataReader alevreader = alevcmd.ExecuteReader())
                         {
-                            while (alevreader.Read())
+                            while (await alevreader.ReadAsync())
                             {
                                 alev_rows = alevreader.GetInt32(0);
                             }
@@ -108,8 +112,7 @@ namespace Simple_ALE_Browser
                         }
                     }                    
 
-                }
-
+                }               
                 lblStatusDisp.Text = "Initial database connection SUCESS";
                 lblStatusDisp.ForeColor = Color.SpringGreen;
                 tabControl1.Enabled = true;
@@ -120,6 +123,11 @@ namespace Simple_ALE_Browser
                 MessageBox.Show("Connection error:" + ex.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 lblStatusDisp.Text = "Initial database connection FAIL";
                 lblStatusDisp.ForeColor = Color.Red;
+            }
+            finally
+            {
+                btnConnectSQL.Text = "Connect to ALEV";
+                btnConnectSQL.Enabled = true;
             }
         }
 

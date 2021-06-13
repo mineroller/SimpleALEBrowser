@@ -72,6 +72,8 @@ namespace Simple_ALE_Browser
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvUserAuditResult)).BeginInit();
@@ -97,6 +99,8 @@ namespace Simple_ALE_Browser
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.lblTempHolder2);
             this.tabPage1.Controls.Add(this.dpkToTime);
             this.tabPage1.Controls.Add(this.dpkFromTime);
@@ -122,7 +126,7 @@ namespace Simple_ALE_Browser
             // lblTempHolder2
             // 
             this.lblTempHolder2.AutoSize = true;
-            this.lblTempHolder2.Location = new System.Drawing.Point(706, 27);
+            this.lblTempHolder2.Location = new System.Drawing.Point(1159, 37);
             this.lblTempHolder2.Name = "lblTempHolder2";
             this.lblTempHolder2.Size = new System.Drawing.Size(43, 17);
             this.lblTempHolder2.TabIndex = 12;
@@ -162,7 +166,7 @@ namespace Simple_ALE_Browser
             // lblTempHolder
             // 
             this.lblTempHolder.AutoSize = true;
-            this.lblTempHolder.Location = new System.Drawing.Point(706, 5);
+            this.lblTempHolder.Location = new System.Drawing.Point(1159, 15);
             this.lblTempHolder.Name = "lblTempHolder";
             this.lblTempHolder.Size = new System.Drawing.Size(43, 17);
             this.lblTempHolder.TabIndex = 8;
@@ -268,9 +272,9 @@ namespace Simple_ALE_Browser
             this.cmbUserList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUserList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUserList.FormattingEnabled = true;
-            this.cmbUserList.Location = new System.Drawing.Point(291, 15);
+            this.cmbUserList.Location = new System.Drawing.Point(335, 15);
             this.cmbUserList.Name = "cmbUserList";
-            this.cmbUserList.Size = new System.Drawing.Size(344, 29);
+            this.cmbUserList.Size = new System.Drawing.Size(182, 29);
             this.cmbUserList.Sorted = true;
             this.cmbUserList.TabIndex = 1;
             // 
@@ -278,11 +282,11 @@ namespace Simple_ALE_Browser
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(170, 22);
+            this.label1.Location = new System.Drawing.Point(193, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 25);
+            this.label1.Size = new System.Drawing.Size(136, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Select User:";
+            this.label1.Text = "1. Select User:";
             // 
             // tabPage2
             // 
@@ -290,7 +294,7 @@ namespace Simple_ALE_Browser
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage2.Size = new System.Drawing.Size(1392, 649);
+            this.tabPage2.Size = new System.Drawing.Size(1392, 686);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Workstation Audit";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -299,7 +303,7 @@ namespace Simple_ALE_Browser
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1392, 649);
+            this.tabPage3.Size = new System.Drawing.Size(1392, 686);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Event Audit";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -512,6 +516,27 @@ namespace Simple_ALE_Browser
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(121, 17);
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(523, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 25);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "On this CC:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(636, 15);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(182, 29);
+            this.comboBox1.Sorted = true;
+            this.comboBox1.TabIndex = 14;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -593,6 +618,8 @@ namespace Simple_ALE_Browser
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label6;
     }
 }
 
