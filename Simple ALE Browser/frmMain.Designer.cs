@@ -31,16 +31,23 @@ namespace Simple_ALE_Browser
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtObjectName = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbActionId = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbComputerList = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.lblTempHolder2 = new System.Windows.Forms.Label();
             this.dpkToTime = new System.Windows.Forms.DateTimePicker();
             this.dpkFromTime = new System.Windows.Forms.DateTimePicker();
-            this.btnGetUsers = new System.Windows.Forms.Button();
+            this.btnInit = new System.Windows.Forms.Button();
             this.lblTempHolder = new System.Windows.Forms.Label();
             this.olvUserAuditResult = new BrightIdeasSoftware.ObjectListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.btnQueryUser = new System.Windows.Forms.Button();
             this.dpkToDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,8 +67,6 @@ namespace Simple_ALE_Browser
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutSimpleAuditLogViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblSqlServerDetail2 = new System.Windows.Forms.Label();
-            this.lblSqlServerDetail1 = new System.Windows.Forms.Label();
             this.btnConnectSQL = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblOldestRow = new System.Windows.Forms.Label();
@@ -72,8 +77,9 @@ namespace Simple_ALE_Browser
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.numMaxRows = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.olvUserAuditResult)).BeginInit();
@@ -82,10 +88,14 @@ namespace Simple_ALE_Browser
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMaxRows)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -99,12 +109,18 @@ namespace Simple_ALE_Browser
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.comboBox1);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.numMaxRows);
+            this.tabPage1.Controls.Add(this.txtObjectName);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.cmbActionId);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.cmbComputerList);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.lblTempHolder2);
             this.tabPage1.Controls.Add(this.dpkToTime);
             this.tabPage1.Controls.Add(this.dpkFromTime);
-            this.tabPage1.Controls.Add(this.btnGetUsers);
             this.tabPage1.Controls.Add(this.lblTempHolder);
             this.tabPage1.Controls.Add(this.olvUserAuditResult);
             this.tabPage1.Controls.Add(this.btnQueryUser);
@@ -123,10 +139,74 @@ namespace Simple_ALE_Browser
             this.tabPage1.Text = "User Audit";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // txtObjectName
+            // 
+            this.txtObjectName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtObjectName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtObjectName.Location = new System.Drawing.Point(1182, 12);
+            this.txtObjectName.Name = "txtObjectName";
+            this.txtObjectName.Size = new System.Drawing.Size(191, 29);
+            this.txtObjectName.TabIndex = 18;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(1007, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(169, 21);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "4. Camera No/Name:";
+            // 
+            // cmbActionId
+            // 
+            this.cmbActionId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbActionId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbActionId.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbActionId.FormattingEnabled = true;
+            this.cmbActionId.Location = new System.Drawing.Point(714, 12);
+            this.cmbActionId.Name = "cmbActionId";
+            this.cmbActionId.Size = new System.Drawing.Size(287, 29);
+            this.cmbActionId.Sorted = true;
+            this.cmbActionId.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(606, 15);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(102, 21);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "3. Activities:";
+            // 
+            // cmbComputerList
+            // 
+            this.cmbComputerList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbComputerList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbComputerList.FormattingEnabled = true;
+            this.cmbComputerList.Location = new System.Drawing.Point(418, 12);
+            this.cmbComputerList.Name = "cmbComputerList";
+            this.cmbComputerList.Size = new System.Drawing.Size(182, 29);
+            this.cmbComputerList.Sorted = true;
+            this.cmbComputerList.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(303, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(109, 21);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "2. On this CC:";
+            // 
             // lblTempHolder2
             // 
             this.lblTempHolder2.AutoSize = true;
-            this.lblTempHolder2.Location = new System.Drawing.Point(1159, 37);
+            this.lblTempHolder2.Location = new System.Drawing.Point(1138, 71);
             this.lblTempHolder2.Name = "lblTempHolder2";
             this.lblTempHolder2.Size = new System.Drawing.Size(43, 17);
             this.lblTempHolder2.TabIndex = 12;
@@ -136,37 +216,37 @@ namespace Simple_ALE_Browser
             // 
             this.dpkToTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkToTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dpkToTime.Location = new System.Drawing.Point(709, 90);
+            this.dpkToTime.Location = new System.Drawing.Point(488, 100);
             this.dpkToTime.Name = "dpkToTime";
             this.dpkToTime.ShowUpDown = true;
-            this.dpkToTime.Size = new System.Drawing.Size(344, 29);
+            this.dpkToTime.Size = new System.Drawing.Size(250, 29);
             this.dpkToTime.TabIndex = 11;
             // 
             // dpkFromTime
             // 
             this.dpkFromTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dpkFromTime.Location = new System.Drawing.Point(291, 90);
+            this.dpkFromTime.Location = new System.Drawing.Point(188, 100);
             this.dpkFromTime.Name = "dpkFromTime";
             this.dpkFromTime.ShowUpDown = true;
-            this.dpkFromTime.Size = new System.Drawing.Size(344, 29);
+            this.dpkFromTime.Size = new System.Drawing.Size(250, 29);
             this.dpkFromTime.TabIndex = 10;
             // 
-            // btnGetUsers
+            // btnInit
             // 
-            this.btnGetUsers.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetUsers.Location = new System.Drawing.Point(18, 15);
-            this.btnGetUsers.Name = "btnGetUsers";
-            this.btnGetUsers.Size = new System.Drawing.Size(129, 98);
-            this.btnGetUsers.TabIndex = 9;
-            this.btnGetUsers.Text = "Get / Refresh Users";
-            this.btnGetUsers.UseVisualStyleBackColor = true;
-            this.btnGetUsers.Click += new System.EventHandler(this.btnGetUsers_Click);
+            this.btnInit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInit.Location = new System.Drawing.Point(22, 24);
+            this.btnInit.Name = "btnInit";
+            this.btnInit.Size = new System.Drawing.Size(313, 39);
+            this.btnInit.TabIndex = 9;
+            this.btnInit.Text = "Initialise / Refresh Audit Data";
+            this.btnInit.UseVisualStyleBackColor = true;
+            this.btnInit.Click += new System.EventHandler(this.btnInit_Click);
             // 
             // lblTempHolder
             // 
             this.lblTempHolder.AutoSize = true;
-            this.lblTempHolder.Location = new System.Drawing.Point(1159, 15);
+            this.lblTempHolder.Location = new System.Drawing.Point(1138, 100);
             this.lblTempHolder.Name = "lblTempHolder";
             this.lblTempHolder.Size = new System.Drawing.Size(43, 17);
             this.lblTempHolder.TabIndex = 8;
@@ -178,19 +258,24 @@ namespace Simple_ALE_Browser
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn4);
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn2);
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn3);
+            this.olvUserAuditResult.AllColumns.Add(this.olvColumn5);
+            this.olvUserAuditResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.olvUserAuditResult.CellEditUseWholeCell = false;
             this.olvUserAuditResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn1,
             this.olvColumn4,
             this.olvColumn2,
-            this.olvColumn3});
+            this.olvColumn3,
+            this.olvColumn5});
             this.olvUserAuditResult.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvUserAuditResult.FullRowSelect = true;
             this.olvUserAuditResult.HideSelection = false;
-            this.olvUserAuditResult.Location = new System.Drawing.Point(6, 125);
+            this.olvUserAuditResult.Location = new System.Drawing.Point(12, 135);
             this.olvUserAuditResult.Name = "olvUserAuditResult";
             this.olvUserAuditResult.ShowGroups = false;
-            this.olvUserAuditResult.Size = new System.Drawing.Size(1380, 569);
+            this.olvUserAuditResult.Size = new System.Drawing.Size(1374, 543);
             this.olvUserAuditResult.TabIndex = 7;
             this.olvUserAuditResult.UseAlternatingBackColors = true;
             this.olvUserAuditResult.UseCompatibleStateImageBehavior = false;
@@ -218,32 +303,40 @@ namespace Simple_ALE_Browser
             // 
             this.olvColumn3.AspectName = "Information";
             this.olvColumn3.Text = "Activity";
-            this.olvColumn3.Width = 768;
+            this.olvColumn3.Width = 636;
+            // 
+            // olvColumn5
+            // 
+            this.olvColumn5.AspectName = "SourceIp";
+            this.olvColumn5.Text = "Camera IP Address";
+            this.olvColumn5.Width = 177;
             // 
             // btnQueryUser
             // 
+            this.btnQueryUser.BackColor = System.Drawing.Color.DarkGreen;
             this.btnQueryUser.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQueryUser.Location = new System.Drawing.Point(1093, 62);
+            this.btnQueryUser.ForeColor = System.Drawing.Color.Gold;
+            this.btnQueryUser.Location = new System.Drawing.Point(744, 62);
             this.btnQueryUser.Name = "btnQueryUser";
-            this.btnQueryUser.Size = new System.Drawing.Size(236, 51);
+            this.btnQueryUser.Size = new System.Drawing.Size(285, 36);
             this.btnQueryUser.TabIndex = 6;
             this.btnQueryUser.Text = "Find User Activity";
-            this.btnQueryUser.UseVisualStyleBackColor = true;
+            this.btnQueryUser.UseVisualStyleBackColor = false;
             this.btnQueryUser.Click += new System.EventHandler(this.btnQueryUser_Click);
             // 
             // dpkToDate
             // 
             this.dpkToDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpkToDate.Location = new System.Drawing.Point(709, 55);
+            this.dpkToDate.Location = new System.Drawing.Point(488, 65);
             this.dpkToDate.Name = "dpkToDate";
-            this.dpkToDate.Size = new System.Drawing.Size(344, 29);
+            this.dpkToDate.Size = new System.Drawing.Size(250, 29);
             this.dpkToDate.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(672, 52);
+            this.label3.Location = new System.Drawing.Point(444, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 25);
             this.label3.TabIndex = 4;
@@ -253,7 +346,7 @@ namespace Simple_ALE_Browser
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(221, 55);
+            this.label2.Location = new System.Drawing.Point(118, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 25);
             this.label2.TabIndex = 3;
@@ -262,9 +355,9 @@ namespace Simple_ALE_Browser
             // dpkFromDate
             // 
             this.dpkFromDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpkFromDate.Location = new System.Drawing.Point(291, 55);
+            this.dpkFromDate.Location = new System.Drawing.Point(188, 65);
             this.dpkFromDate.Name = "dpkFromDate";
-            this.dpkFromDate.Size = new System.Drawing.Size(344, 29);
+            this.dpkFromDate.Size = new System.Drawing.Size(250, 29);
             this.dpkFromDate.TabIndex = 2;
             // 
             // cmbUserList
@@ -272,7 +365,7 @@ namespace Simple_ALE_Browser
             this.cmbUserList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUserList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUserList.FormattingEnabled = true;
-            this.cmbUserList.Location = new System.Drawing.Point(335, 15);
+            this.cmbUserList.Location = new System.Drawing.Point(115, 12);
             this.cmbUserList.Name = "cmbUserList";
             this.cmbUserList.Size = new System.Drawing.Size(182, 29);
             this.cmbUserList.Sorted = true;
@@ -281,12 +374,12 @@ namespace Simple_ALE_Browser
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(193, 15);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 25);
+            this.label1.Size = new System.Drawing.Size(101, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "1. Select User:";
+            this.label1.Text = "1. This User:";
             // 
             // tabPage2
             // 
@@ -310,6 +403,8 @@ namespace Simple_ALE_Browser
             // 
             // grpConnectInfo
             // 
+            this.grpConnectInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpConnectInfo.Controls.Add(this.lblStatusDisp);
             this.grpConnectInfo.Location = new System.Drawing.Point(944, 29);
             this.grpConnectInfo.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -322,13 +417,15 @@ namespace Simple_ALE_Browser
             // 
             // lblStatusDisp
             // 
+            this.lblStatusDisp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStatusDisp.BackColor = System.Drawing.Color.Black;
             this.lblStatusDisp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStatusDisp.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatusDisp.ForeColor = System.Drawing.Color.Red;
-            this.lblStatusDisp.Location = new System.Drawing.Point(6, 25);
+            this.lblStatusDisp.Location = new System.Drawing.Point(6, 20);
             this.lblStatusDisp.Name = "lblStatusDisp";
-            this.lblStatusDisp.Size = new System.Drawing.Size(452, 51);
+            this.lblStatusDisp.Size = new System.Drawing.Size(452, 56);
             this.lblStatusDisp.TabIndex = 0;
             this.lblStatusDisp.Text = "[Not Connected]";
             this.lblStatusDisp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -390,33 +487,14 @@ namespace Simple_ALE_Browser
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblSqlServerDetail2);
-            this.groupBox1.Controls.Add(this.lblSqlServerDetail1);
+            this.groupBox1.Controls.Add(this.btnInit);
             this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(205, 29);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(357, 81);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Server Information";
-            // 
-            // lblSqlServerDetail2
-            // 
-            this.lblSqlServerDetail2.Location = new System.Drawing.Point(7, 49);
-            this.lblSqlServerDetail2.Name = "lblSqlServerDetail2";
-            this.lblSqlServerDetail2.Size = new System.Drawing.Size(344, 23);
-            this.lblSqlServerDetail2.TabIndex = 1;
-            this.lblSqlServerDetail2.Text = "[Not Connected]";
-            this.lblSqlServerDetail2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblSqlServerDetail1
-            // 
-            this.lblSqlServerDetail1.Location = new System.Drawing.Point(7, 23);
-            this.lblSqlServerDetail1.Name = "lblSqlServerDetail1";
-            this.lblSqlServerDetail1.Size = new System.Drawing.Size(344, 23);
-            this.lblSqlServerDetail1.TabIndex = 0;
-            this.lblSqlServerDetail1.Text = "[Not Connected]";
-            this.lblSqlServerDetail1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.groupBox1.Text = "Initialise Browser";
             // 
             // btnConnectSQL
             // 
@@ -507,35 +585,60 @@ namespace Simple_ALE_Browser
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(121, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(97, 17);
+            this.toolStripStatusLabel1.Text = "[Not Connected]";
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(121, 17);
-            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(97, 17);
+            this.toolStripStatusLabel2.Text = "[Not Connected]";
             // 
-            // label6
+            // numMaxRows
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(523, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(107, 25);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "On this CC:";
+            this.numMaxRows.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numMaxRows.Location = new System.Drawing.Point(938, 104);
+            this.numMaxRows.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.numMaxRows.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numMaxRows.Name = "numMaxRows";
+            this.numMaxRows.Size = new System.Drawing.Size(91, 25);
+            this.numMaxRows.TabIndex = 19;
+            this.numMaxRows.ThousandsSeparator = true;
+            this.numMaxRows.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             // 
-            // comboBox1
+            // label9
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(636, 15);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(182, 29);
-            this.comboBox1.Sorted = true;
-            this.comboBox1.TabIndex = 14;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(753, 106);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(179, 17);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Maximum Results (100-2000):";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1233, 87);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(153, 42);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Export Result to CSV";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
@@ -555,7 +658,7 @@ namespace Simple_ALE_Browser
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Simple Audit Log Viewer for SQL Server";
+            this.Text = "Simple ALE Browser for IV Audit Log Event Database (MS-SQL Edition)";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -568,6 +671,7 @@ namespace Simple_ALE_Browser
             this.groupBox2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numMaxRows)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -599,14 +703,13 @@ namespace Simple_ALE_Browser
         private BrightIdeasSoftware.OLVColumn olvColumn1;
         private BrightIdeasSoftware.OLVColumn olvColumn2;
         private BrightIdeasSoftware.OLVColumn olvColumn3;
-        private System.Windows.Forms.Label lblSqlServerDetail1;
         private System.Windows.Forms.ToolStripMenuItem configureSQLConnectionToolStripMenuItem;
         private System.Windows.Forms.Button btnConnectSQL;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblDbRows;
         private System.Windows.Forms.Label lblTempHolder;
         private System.Windows.Forms.Label lblTargetServer;
-        private System.Windows.Forms.Button btnGetUsers;
+        private System.Windows.Forms.Button btnInit;
         private System.Windows.Forms.DateTimePicker dpkToTime;
         private System.Windows.Forms.DateTimePicker dpkFromTime;
         private System.Windows.Forms.Label lblTempHolder2;
@@ -614,12 +717,19 @@ namespace Simple_ALE_Browser
         private System.Windows.Forms.Label lblOldestRow;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblSqlServerDetail2;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbComputerList;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbActionId;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtObjectName;
+        private System.Windows.Forms.Label label8;
+        private BrightIdeasSoftware.OLVColumn olvColumn5;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown numMaxRows;
+        private System.Windows.Forms.Button button1;
     }
 }
 

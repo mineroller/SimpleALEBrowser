@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Simple ALE Browser")]
 [assembly: AssemblyDescription("Simple Audit Log Viewer for IndigoVision ControlCenter")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Planet Express Ltda")]
+[assembly: AssemblyCompany("Hananet Inc.")]
 [assembly: AssemblyProduct("Simple ALE Browser")]
 [assembly: AssemblyCopyright("Copyright © Jonathan Lee 2021")]
 [assembly: AssemblyTrademark("")]
