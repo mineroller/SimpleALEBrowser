@@ -77,6 +77,8 @@ namespace Simple_ALE_Browser
             txtDatabaseName.Text = _settings.DatabaseName;
             txtLogin.Text = _settings.LoginName;
             txtPassword.Text = aes.Decrypt(_settings.Password);
+            txtOnvifLogin.Text = _settings.OnvifLogin;
+            txtOnvifPassword.Text = aes.Decrypt(_settings.OnvifPassword);
 
         }
 
@@ -89,6 +91,8 @@ namespace Simple_ALE_Browser
             _settings.DatabaseName = txtDatabaseName.Text;
             _settings.LoginName = txtLogin.Text;
             _settings.Password = aes.Encrypt(txtPassword.Text);
+            _settings.OnvifLogin = txtOnvifLogin.Text;
+            _settings.OnvifPassword = aes.Encrypt(txtOnvifPassword.Text);
 
             return _settings;
 
@@ -105,7 +109,9 @@ namespace Simple_ALE_Browser
                 InstanceName = "SQLEXPRESS",
                 DatabaseName = "IV_ALEV",
                 LoginName = "ivaudituser",
-                Password = aes.Encrypt("Pel2899100@")
+                Password = aes.Encrypt("Pel2899100@"),
+                OnvifLogin = "admin",
+                OnvifPassword = aes.Encrypt("admin")
             };
 
             return _default;
@@ -150,6 +156,18 @@ namespace Simple_ALE_Browser
             else
             {                
                 txtPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void chkOnvifUnmask_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkOnvifUnmask.Checked == true)
+            {
+                txtOnvifPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtOnvifPassword.UseSystemPasswordChar = true;
             }
         }
     }

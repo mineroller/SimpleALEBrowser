@@ -7,6 +7,12 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using Simple_ALE_Browser.OnvifMedia2;
+using Color = System.Drawing.Color;
+using System.ServiceModel.Channels;
+using System.ServiceModel;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Simple_ALE_Browser
 {
@@ -273,7 +279,7 @@ namespace Simple_ALE_Browser
             _actionList.Add(new AlevAction("Bookmark Added", 81, 0, 0));
             _actionList.Add(new AlevAction("Recorded Video Fail/Denied", 51, 52, 0));
             _actionList.Add(new AlevAction("Playback Video", 35, 36, 37));
-            _actionList.Add(new AlevAction("Export Video", 9, 10, 13));
+            _actionList.Add(new AlevAction("Export Video", 13, 28, 0));
             _actionList.Add(new AlevAction("Live Video", 60, 61, 62));
             _actionList.Add(new AlevAction("Export Incident", 88, 0, 0));
             _actionList.Add(new AlevAction("Change Permissions", 78, 79, 80));
@@ -392,8 +398,10 @@ namespace Simple_ALE_Browser
 
         private string BuildUserQuery(DateTime _from, DateTime _to)
         {
+            // Add a custom counter column called Total to get the number of affected rows for this query.
+            
             string _query = "SELECT TOP(" + numMaxRows.Value.ToString() + ") " +
-                "ActionDateLocal,UserName,ComputerName,ObjectName,Information,SourceIp,DeviceId " +
+                "ActionDateLocal,UserName,ComputerName,ObjectName,Information,SourceIp,ActionId, " +
                 "COUNT(*) OVER() Total " +
                 "FROM AuditEntry WHERE ";
 
@@ -423,6 +431,117 @@ namespace Simple_ALE_Browser
                 " ORDER BY ActionDateLocal DESC FOR JSON AUTO";
 
             return _query;
+        }
+
+        private void olvUserAuditResult_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UserAuditResult _uar = (UserAuditResult)olvUserAuditResult.SelectedObject;
+
+            if (_uar != null)
+            {                
+                switch (_uar.ActionId)
+                {
+                    case 31:
+                    case 33:
+                        lblObjectType.Text = "Login-Logout";
+                        lblSelectedCamName.Text = "Username: " + _uar.ObjectName;
+                        lblSelectedCamIp.Text = "(No associated camera)";
+                        break;
+                    case 67:
+                    case 68:
+                    case 69:
+                        lblObjectType.Text = "Alarm Zone";
+                        lblSelectedCamName.Text = _uar.ObjectName;
+                        lblSelectedCamIp.Text = "(No associated camera)";
+                        break;
+                    case 81:
+                        lblObjectType.Text = "Bookmark";
+                        lblSelectedCamName.Text = _uar.ObjectName;
+                        lblSelectedCamIp.Text = "(No associated camera)";
+                        break;
+                    case 10:
+                    case 13:
+                    case 28:
+                        lblObjectType.Text = "Exports";
+                        lblSelectedCamName.Text = _uar.ObjectName;
+                        lblSelectedCamIp.Text = _uar.ConvertedIP.ToString();
+                        break;
+                    case 51:
+                    case 52:
+                        lblObjectType.Text = "Playback Failed or Denied";
+                        lblSelectedCamName.Text = _uar.ObjectName;
+                        lblSelectedCamIp.Text = _uar.ConvertedIP.ToString();
+                        break;
+                    case 35:
+                    case 36:
+                    case 37:
+                        lblObjectType.Text = "Playback Success";
+                        lblSelectedCamName.Text = _uar.ObjectName;
+                        lblSelectedCamIp.Text = _uar.ConvertedIP.ToString();
+                        break;
+                    case 60:
+                    case 61:
+                    case 62:
+                        lblObjectType.Text = "Camera Live Stream";
+                        lblSelectedCamName.Text = _uar.ObjectName;
+                        lblSelectedCamIp.Text = _uar.ConvertedIP.ToString();
+                        break;
+                    case 88:
+                        lblObjectType.Text = "Incident File Created";
+                        lblSelectedCamName.Text = _uar.ObjectName;
+                        lblSelectedCamIp.Text = "(No associated camera)";
+                        break;
+                    case 78:
+                    case 79:
+                    case 80:
+                        lblObjectType.Text = "Permission Changed";
+                        lblSelectedCamName.Text = _uar.ObjectName;
+                        lblSelectedCamIp.Text = "(No associated camera)";
+                        break;
+                }
+
+            }            
+        }
+
+        private async void chkPreviewCamera_CheckedChanged(object sender, EventArgs e)
+        {
+            string _endpoint = "http://192.168.81.22:80/onvif/Media";
+            try
+            {
+                string _snapshotURI = await GetONVIFSnapshotURI(_endpoint);
+                MessageBox.Show(_snapshotURI);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }                                 
+        }
+
+        private async Task<string> GetONVIFSnapshotURI(string _camEndpoint)
+        {
+
+            // SO Answer:
+            // https://stackoverflow.com/questions/32779467/onvif-api-capture-image-in-c-sharp
+
+            var messageElement = new TextMessageEncodingBindingElement();
+            messageElement.MessageVersion = MessageVersion.CreateVersion(EnvelopeVersion.Soap12, AddressingVersion.None);
+
+            HttpTransportBindingElement httpBinding = new HttpTransportBindingElement();
+            httpBinding.AuthenticationScheme = AuthenticationSchemes.Basic;
+
+            CustomBinding bind = new CustomBinding(messageElement, httpBinding);
+            EndpointAddress mediaAddress = new EndpointAddress(_camEndpoint);
+
+            Media2Client sabM2Client = new Media2Client(bind, mediaAddress);
+
+            sabM2Client.ClientCredentials.UserName.UserName = _sabSettings.OnvifLogin;
+            sabM2Client.ClientCredentials.UserName.Password = _sabSettings.OnvifPassword;            
+            
+            GetProfilesResponse profiles = await sabM2Client.GetProfilesAsync(null, null);
+            string _token = profiles.Profiles[1].token;
+            string _mediaUri = sabM2Client.GetSnapshotUri(_token);
+                       
+            return _mediaUri;
         }
     }
 }

@@ -50,8 +50,8 @@ namespace Simple_ALE_Browser
         public string ComputerName { get; set; }
         public string ObjectName { get; set; }
         public string Information { get; set; }
-        public int SourceIp { get; set; }
-        public int DeviceId { get; set; }
+        public int SourceIp { get; set; }     
+        public int ActionId { get; set; }
         public int Total { get; set; }
         public IPAddress ConvertedIP { get; set; }
     }
@@ -64,5 +64,7 @@ namespace Simple_ALE_Browser
         public string DatabaseName { get; set; }
         public string LoginName { get; set; }
         public string Password { get; set; }
+        public string OnvifLogin { get; set; }
+        public string OnvifPassword { get; set; }
     }
 }

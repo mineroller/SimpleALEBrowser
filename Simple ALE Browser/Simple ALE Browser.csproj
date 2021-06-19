@@ -75,7 +75,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,6 +89,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\OnvifMedia2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Helpers.cs" />
     <Compile Include="SAB-Objects.cs" />
     <Compile Include="DataAccess.cs" />
@@ -131,6 +138,163 @@
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="Connected Services\OnvifMedia2\b-2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\bf-2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\include.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\media.wsdl" />
+    <None Include="Connected Services\OnvifMedia2\onvif.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.AddConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.AudioDecoderConfiguration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.AudioEncoder2Configuration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.AudioEncoder2ConfigurationOptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.AudioOutputConfiguration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.AudioOutputConfigurationOptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.AudioSourceConfiguration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.AudioSourceConfigurationOptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.Capabilities2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.CreateProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.EncoderInstanceInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetAnalyticsConfigurationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetAudioDecoderConfigurationOptionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetAudioDecoderConfigurationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetAudioEncoderConfigurationOptionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetAudioEncoderConfigurationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetAudioOutputConfigurationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetAudioSourceConfigurationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetMasksResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetMetadataConfigurationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetOSDsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetProfilesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetSnapshotUriResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetStreamUriResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetVideoEncoderConfigurationOptionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetVideoEncoderConfigurationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetVideoSourceConfigurationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.GetVideoSourceModesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.Mask.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.MaskOptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.MediaProfile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.MetadataConfiguration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.MetadataConfigurationOptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.OSDConfiguration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.OSDConfigurationOptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.RemoveConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.VideoAnalyticsConfiguration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.VideoEncoder2Configuration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.VideoEncoder2ConfigurationOptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.VideoSourceConfiguration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.VideoSourceConfigurationOptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\Simple_ALE_Browser.OnvifMedia2.VideoSourceMode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\t-1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\ws-addr.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\xml.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\OnvifMedia2\xmlmime.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -174,6 +338,30 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\OnvifMedia2\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OnvifMedia2\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OnvifMedia2\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\OnvifMedia2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alert-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IndigoVision_MS_FullColour_RGB_WEBSITE.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
