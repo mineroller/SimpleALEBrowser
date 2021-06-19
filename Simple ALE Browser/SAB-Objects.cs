@@ -51,4 +51,14 @@ namespace Simple_ALE_Browser
         public int SourceIp { get; set; }
         public int Total { get; set; }
     }
+
+    public class SABSettings
+    {
+        public bool IsConfigured { get; set; }
+        public string ServerName { get; set; }
+        public string InstanceName { get; set; }
+        public string DatabaseName { get; set; }
+        public string LoginName { get; set; }
+        public string Password { get; set; }
+    }
 }

@@ -5,12 +5,15 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Simple_ALE_Browser
 {
     public partial class frmMain : Form
     {        
+
+        private static SABSettings _sabSettings = new SABSettings();
 
         public frmMain()
         {                        
@@ -22,9 +25,15 @@ namespace Simple_ALE_Browser
             groupBox2.Enabled = false;
             tabControl1.Enabled = false;            
 
-            // If setting is not ready, disable connect button
+            CheckAndLoadConfig();
+            
+        }
+        
+        private void CheckAndLoadConfig()
+        {
+            string _configFile = Helpers.CheckConfig();
 
-            if (Properties.Settings.Default.ServerName == "")
+            if (_configFile == "NA")
             {
                 lblTargetServer.Text = "PLEASE CONFIG FIRST";
                 lblTargetServer.ForeColor = Color.Red;
@@ -32,19 +41,21 @@ namespace Simple_ALE_Browser
             }
             else
             {
-                lblTargetServer.Text = Properties.Settings.Default.ServerName + @"\" + Properties.Settings.Default.InstanceName;
+                _sabSettings = JsonConvert.DeserializeObject<SABSettings>(File.ReadAllText(_configFile));
+
+                lblTargetServer.Text = _sabSettings.ServerName + @"\" + _sabSettings.InstanceName;
+                lblTargetServer.ForeColor = Color.Black;
                 btnConnectSQL.Enabled = true;
             }
-            
         }
-        
+
         private void configureSQLConnectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form settingsForm = new frmSettings();
             settingsForm.ShowDialog(this);
 
-            lblTargetServer.Text = Properties.Settings.Default.ServerName + @"\" + Properties.Settings.Default.InstanceName;
-            lblTargetServer.ForeColor = Color.Black;
+            CheckAndLoadConfig();
+
             btnConnectSQL.Enabled = true;
 
         }
@@ -54,7 +65,7 @@ namespace Simple_ALE_Browser
 
             // Create SQL Connection String using setting values
 
-            string alev_cs = Program.VUStringHelper.GetConnStr();            
+            string alev_cs = Helpers.GetConnStr(_sabSettings);            
             int alev_rows = 0;            
             
             try
@@ -133,7 +144,7 @@ namespace Simple_ALE_Browser
             }
             finally
             {
-                btnConnectSQL.Text = "Connect to ALEV";
+                btnConnectSQL.Text = "Connect to ALE DB";
                 btnConnectSQL.Enabled = true;
                 menuStrip1.Enabled = true;
 
@@ -148,9 +159,12 @@ namespace Simple_ALE_Browser
         {
             cmbUserList.Items.Clear();
             cmbComputerList.Items.Clear();
-            cmbActionId.Items.Clear();
+            cmbActionId.DataSource = null;
+            lblStatusDisp.Text = "Getting/refreshing list of users and computers...";
+            lblStatusDisp.ForeColor = Color.Gold;
+            tabControl1.Enabled = false;
 
-            string alev_cs = Program.VUStringHelper.GetConnStr();
+            string alev_cs = Helpers.GetConnStr(_sabSettings);
             
             try
             {
@@ -179,6 +193,7 @@ namespace Simple_ALE_Browser
                             cmbUserList.SelectedIndex = 0;
                             cmbUserList.Enabled = true;
                             lblStatusDisp.Text = "Total " + alevuserlist.Count().ToString() + " users found.";
+                            lblStatusDisp.ForeColor = Color.SpringGreen;
                                                         
                         }
                     }
@@ -204,6 +219,7 @@ namespace Simple_ALE_Browser
                             cmbComputerList.SelectedIndex = 0;
                             cmbComputerList.Enabled = true;
                             lblStatusDisp.Text += "\nTotal " + alevcclist.Count().ToString() + " computers found.";
+                            lblStatusDisp.ForeColor = Color.SpringGreen;
 
                         }
                     }                    
@@ -226,7 +242,7 @@ namespace Simple_ALE_Browser
                 }
 
                 cmbActionId.DataSource = _defActions;
-                cmbActionId.DisplayMember = "DisplayText";
+                cmbActionId.DisplayMember = "Description";
                 cmbActionId.ValueMember = "InString";
                 cmbActionId.SelectedIndex = 0;                
                 cmbActionId.Enabled = true;
@@ -242,6 +258,8 @@ namespace Simple_ALE_Browser
 
                 dpkToDate.Value = DateTime.Now;
                 dpkToTime.Value = DateTime.Now;
+
+                tabControl1.Enabled = true;
             }
         }
 
@@ -290,7 +308,7 @@ namespace Simple_ALE_Browser
             {
                 try
                 {
-                    string alev_cs = Program.VUStringHelper.GetConnStr();
+                    string alev_cs = Helpers.GetConnStr(_sabSettings);
                     using (SqlConnection alevconn = new SqlConnection(alev_cs))
                     {
                         await alevconn.OpenAsync();
@@ -300,6 +318,7 @@ namespace Simple_ALE_Browser
                         using (SqlCommand alevcmd = new SqlCommand(query_useraudit, alevconn))
                         {
                             lblStatusDisp.Text = "Query in progress...";
+                            lblStatusDisp.ForeColor = Color.Gold;
 
                             if (txtObjectName.Text != "")
                             {
@@ -329,22 +348,26 @@ namespace Simple_ALE_Browser
                             
                                 List<UserAuditResult> userAuditResults = JsonConvert.DeserializeObject<List<UserAuditResult>>(result_json.ToString());
 
-                                switch (userAuditResults[0].Total)
+                                if (userAuditResults.Count == 0)
                                 {
-                                    case int n when n == 0:
-                                        lblStatusDisp.Text = "No matching records found";
-                                        lblStatusDisp.ForeColor = Color.Gold;
-                                        break;
-                                    case int n when n <= numMaxRows.Value:
-                                        lblStatusDisp.Text = "Total " + userAuditResults[0].Total.ToString() + " events found.";
-                                        lblStatusDisp.ForeColor = Color.SpringGreen;
-                                        break;
-                                    case int n when n > numMaxRows.Value:
-                                        lblStatusDisp.Text = "Total " + userAuditResults[0].Total.ToString() + " events found.\nShowing top " + userAuditResults.Count() + " results.";
-                                        lblStatusDisp.ForeColor = Color.SpringGreen;
-                                        break;
+                                    lblStatusDisp.Text = "No matching records found";
+                                    lblStatusDisp.ForeColor = Color.Gold;
                                 }
-
+                                else
+                                {
+                                    switch (userAuditResults[0].Total)
+                                    {                                        
+                                        case int n when n <= numMaxRows.Value:
+                                            lblStatusDisp.Text = "Total " + userAuditResults[0].Total.ToString() + " events found.";
+                                            lblStatusDisp.ForeColor = Color.SpringGreen;
+                                            break;
+                                        case int n when n > numMaxRows.Value:
+                                            lblStatusDisp.Text = "Total " + userAuditResults[0].Total.ToString() + " events found.\nShowing top " + userAuditResults.Count() + " results.";
+                                            lblStatusDisp.ForeColor = Color.SpringGreen;
+                                            break;
+                                    }
+                                }
+                                
                                 olvUserAuditResult.SetObjects(userAuditResults);
                                 olvUserAuditResult.Enabled = true;
                                 btnQueryUser.Enabled = true;
@@ -354,7 +377,7 @@ namespace Simple_ALE_Browser
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Connection error:" + ex.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Connection error: " + ex.Source +"|"+ ex.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     lblStatusDisp.Text = "Error in SQL Query. Check connection to SQL.";
                     lblStatusDisp.ForeColor = Color.Red;
                 }
