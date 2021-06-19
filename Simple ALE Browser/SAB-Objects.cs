@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace Simple_ALE_Browser
 {
@@ -47,9 +48,12 @@ namespace Simple_ALE_Browser
         public string ActionDateLocal { get; set; }
         public string UserName { get; set; }
         public string ComputerName { get; set; }
+        public string ObjectName { get; set; }
         public string Information { get; set; }
         public int SourceIp { get; set; }
+        public int DeviceId { get; set; }
         public int Total { get; set; }
+        public IPAddress ConvertedIP { get; set; }
     }
 
     public class SABSettings

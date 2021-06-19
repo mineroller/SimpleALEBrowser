@@ -348,6 +348,12 @@ namespace Simple_ALE_Browser
                             
                                 List<UserAuditResult> userAuditResults = JsonConvert.DeserializeObject<List<UserAuditResult>>(result_json.ToString());
 
+                                foreach (UserAuditResult _r in userAuditResults)
+                                {
+                                    _r.ConvertedIP = Helpers.IpIntToAddr(_r.SourceIp.ToString());
+                                }
+
+
                                 if (userAuditResults.Count == 0)
                                 {
                                     lblStatusDisp.Text = "No matching records found";
@@ -358,11 +364,11 @@ namespace Simple_ALE_Browser
                                     switch (userAuditResults[0].Total)
                                     {                                        
                                         case int n when n <= numMaxRows.Value:
-                                            lblStatusDisp.Text = "Total " + userAuditResults[0].Total.ToString() + " events found.";
+                                            lblStatusDisp.Text = "Total " + userAuditResults[0].Total.ToString("N0") + " events found.";
                                             lblStatusDisp.ForeColor = Color.SpringGreen;
                                             break;
                                         case int n when n > numMaxRows.Value:
-                                            lblStatusDisp.Text = "Total " + userAuditResults[0].Total.ToString() + " events found.\nShowing top " + userAuditResults.Count() + " results.";
+                                            lblStatusDisp.Text = "Total " + userAuditResults[0].Total.ToString("N0") + " events found.\nShowing top " + userAuditResults.Count() + " results.";
                                             lblStatusDisp.ForeColor = Color.SpringGreen;
                                             break;
                                     }
@@ -387,7 +393,7 @@ namespace Simple_ALE_Browser
         private string BuildUserQuery(DateTime _from, DateTime _to)
         {
             string _query = "SELECT TOP(" + numMaxRows.Value.ToString() + ") " +
-                "ActionDateLocal,UserName,ComputerName,Information,SourceIp, " +
+                "ActionDateLocal,UserName,ComputerName,ObjectName,Information,SourceIp,DeviceId " +
                 "COUNT(*) OVER() Total " +
                 "FROM AuditEntry WHERE ";
 

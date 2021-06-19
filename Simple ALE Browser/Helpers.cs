@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 
 namespace Simple_ALE_Browser
 {
@@ -33,5 +34,14 @@ namespace Simple_ALE_Browser
                 return "NA";
             }
         }
+
+        public static IPAddress IpIntToAddr(string _ipint)
+        {
+            IPAddress _ipaddr = IPAddress.Parse(_ipint);
+
+            return _ipaddr;
+        }
+       
+
     }
 }

@@ -48,7 +48,6 @@ namespace Simple_ALE_Browser
             this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.btnQueryUser = new System.Windows.Forms.Button();
             this.dpkToDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -79,6 +78,10 @@ namespace Simple_ALE_Browser
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.grpCameraInfo = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblSelectedCamIp = new System.Windows.Forms.Label();
+            this.lblSelectedCamName = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxRows)).BeginInit();
@@ -88,6 +91,8 @@ namespace Simple_ALE_Browser
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.grpCameraInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -108,6 +113,7 @@ namespace Simple_ALE_Browser
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.grpCameraInfo);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.numMaxRows);
@@ -138,9 +144,9 @@ namespace Simple_ALE_Browser
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1233, 87);
+            this.button1.Location = new System.Drawing.Point(1219, 65);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 42);
+            this.button1.Size = new System.Drawing.Size(153, 36);
             this.button1.TabIndex = 21;
             this.button1.Text = "Export Result to CSV";
             this.button1.UseVisualStyleBackColor = true;
@@ -272,7 +278,6 @@ namespace Simple_ALE_Browser
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn4);
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn2);
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn3);
-            this.olvUserAuditResult.AllColumns.Add(this.olvColumn5);
             this.olvUserAuditResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -281,15 +286,14 @@ namespace Simple_ALE_Browser
             this.olvColumn1,
             this.olvColumn4,
             this.olvColumn2,
-            this.olvColumn3,
-            this.olvColumn5});
+            this.olvColumn3});
             this.olvUserAuditResult.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvUserAuditResult.FullRowSelect = true;
             this.olvUserAuditResult.HideSelection = false;
             this.olvUserAuditResult.Location = new System.Drawing.Point(12, 135);
             this.olvUserAuditResult.Name = "olvUserAuditResult";
             this.olvUserAuditResult.ShowGroups = false;
-            this.olvUserAuditResult.Size = new System.Drawing.Size(1374, 543);
+            this.olvUserAuditResult.Size = new System.Drawing.Size(989, 543);
             this.olvUserAuditResult.TabIndex = 7;
             this.olvUserAuditResult.UseAlternatingBackColors = true;
             this.olvUserAuditResult.UseCompatibleStateImageBehavior = false;
@@ -317,13 +321,7 @@ namespace Simple_ALE_Browser
             // 
             this.olvColumn3.AspectName = "Information";
             this.olvColumn3.Text = "Activity";
-            this.olvColumn3.Width = 636;
-            // 
-            // olvColumn5
-            // 
-            this.olvColumn5.AspectName = "SourceIp";
-            this.olvColumn5.Text = "Camera IP Address";
-            this.olvColumn5.Width = 177;
+            this.olvColumn3.Width = 239;
             // 
             // btnQueryUser
             // 
@@ -619,6 +617,46 @@ namespace Simple_ALE_Browser
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(96, 17);
             this.toolStripStatusLabel2.Text = "[Not Connected]";
             // 
+            // grpCameraInfo
+            // 
+            this.grpCameraInfo.Controls.Add(this.lblSelectedCamName);
+            this.grpCameraInfo.Controls.Add(this.lblSelectedCamIp);
+            this.grpCameraInfo.Controls.Add(this.pictureBox1);
+            this.grpCameraInfo.Location = new System.Drawing.Point(1017, 135);
+            this.grpCameraInfo.Name = "grpCameraInfo";
+            this.grpCameraInfo.Size = new System.Drawing.Size(368, 414);
+            this.grpCameraInfo.TabIndex = 22;
+            this.grpCameraInfo.TabStop = false;
+            this.grpCameraInfo.Text = "Associated Camera for the Selected Activity";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(19, 29);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(336, 257);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblSelectedCamIp
+            // 
+            this.lblSelectedCamIp.AutoSize = true;
+            this.lblSelectedCamIp.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedCamIp.Location = new System.Drawing.Point(25, 310);
+            this.lblSelectedCamIp.Name = "lblSelectedCamIp";
+            this.lblSelectedCamIp.Size = new System.Drawing.Size(112, 25);
+            this.lblSelectedCamIp.TabIndex = 1;
+            this.lblSelectedCamIp.Text = "[IP Address]";
+            // 
+            // lblSelectedCamName
+            // 
+            this.lblSelectedCamName.AutoSize = true;
+            this.lblSelectedCamName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedCamName.Location = new System.Drawing.Point(25, 349);
+            this.lblSelectedCamName.Name = "lblSelectedCamName";
+            this.lblSelectedCamName.Size = new System.Drawing.Size(144, 25);
+            this.lblSelectedCamName.TabIndex = 2;
+            this.lblSelectedCamName.Text = "[Camera Name]";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -652,6 +690,9 @@ namespace Simple_ALE_Browser
             this.groupBox2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.grpCameraInfo.ResumeLayout(false);
+            this.grpCameraInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -704,10 +745,13 @@ namespace Simple_ALE_Browser
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtObjectName;
         private System.Windows.Forms.Label label8;
-        private BrightIdeasSoftware.OLVColumn olvColumn5;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown numMaxRows;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox grpCameraInfo;
+        private System.Windows.Forms.Label lblSelectedCamName;
+        private System.Windows.Forms.Label lblSelectedCamIp;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
