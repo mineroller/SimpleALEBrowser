@@ -172,5 +172,8 @@
   <ItemGroup>
     <None Include="Resources\Graphicloads-100-Flat-Zoom-search-2.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

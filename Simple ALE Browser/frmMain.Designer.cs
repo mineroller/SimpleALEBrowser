@@ -32,6 +32,10 @@ namespace Simple_ALE_Browser
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.grpCameraInfo = new System.Windows.Forms.GroupBox();
+            this.lblSelectedCamName = new System.Windows.Forms.Label();
+            this.lblSelectedCamIp = new System.Windows.Forms.Label();
+            this.picCamPreview = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.numMaxRows = new System.Windows.Forms.NumericUpDown();
@@ -78,12 +82,10 @@ namespace Simple_ALE_Browser
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.grpCameraInfo = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblSelectedCamIp = new System.Windows.Forms.Label();
-            this.lblSelectedCamName = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.grpCameraInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picCamPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxRows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.olvUserAuditResult)).BeginInit();
             this.grpConnectInfo.SuspendLayout();
@@ -91,8 +93,6 @@ namespace Simple_ALE_Browser
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.grpCameraInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -141,6 +141,46 @@ namespace Simple_ALE_Browser
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "User Audit";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // grpCameraInfo
+            // 
+            this.grpCameraInfo.Controls.Add(this.lblSelectedCamName);
+            this.grpCameraInfo.Controls.Add(this.lblSelectedCamIp);
+            this.grpCameraInfo.Controls.Add(this.picCamPreview);
+            this.grpCameraInfo.Location = new System.Drawing.Point(1017, 135);
+            this.grpCameraInfo.Name = "grpCameraInfo";
+            this.grpCameraInfo.Size = new System.Drawing.Size(368, 414);
+            this.grpCameraInfo.TabIndex = 22;
+            this.grpCameraInfo.TabStop = false;
+            this.grpCameraInfo.Text = "Associated Camera for the Selected Activity";
+            // 
+            // lblSelectedCamName
+            // 
+            this.lblSelectedCamName.AutoSize = true;
+            this.lblSelectedCamName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedCamName.Location = new System.Drawing.Point(25, 349);
+            this.lblSelectedCamName.Name = "lblSelectedCamName";
+            this.lblSelectedCamName.Size = new System.Drawing.Size(144, 25);
+            this.lblSelectedCamName.TabIndex = 2;
+            this.lblSelectedCamName.Text = "[Camera Name]";
+            // 
+            // lblSelectedCamIp
+            // 
+            this.lblSelectedCamIp.AutoSize = true;
+            this.lblSelectedCamIp.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectedCamIp.Location = new System.Drawing.Point(25, 310);
+            this.lblSelectedCamIp.Name = "lblSelectedCamIp";
+            this.lblSelectedCamIp.Size = new System.Drawing.Size(112, 25);
+            this.lblSelectedCamIp.TabIndex = 1;
+            this.lblSelectedCamIp.Text = "[IP Address]";
+            // 
+            // picCamPreview
+            // 
+            this.picCamPreview.Location = new System.Drawing.Point(19, 29);
+            this.picCamPreview.Name = "picCamPreview";
+            this.picCamPreview.Size = new System.Drawing.Size(336, 257);
+            this.picCamPreview.TabIndex = 0;
+            this.picCamPreview.TabStop = false;
             // 
             // button1
             // 
@@ -321,7 +361,7 @@ namespace Simple_ALE_Browser
             // 
             this.olvColumn3.AspectName = "Information";
             this.olvColumn3.Text = "Activity";
-            this.olvColumn3.Width = 239;
+            this.olvColumn3.Width = 426;
             // 
             // btnQueryUser
             // 
@@ -617,46 +657,6 @@ namespace Simple_ALE_Browser
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(96, 17);
             this.toolStripStatusLabel2.Text = "[Not Connected]";
             // 
-            // grpCameraInfo
-            // 
-            this.grpCameraInfo.Controls.Add(this.lblSelectedCamName);
-            this.grpCameraInfo.Controls.Add(this.lblSelectedCamIp);
-            this.grpCameraInfo.Controls.Add(this.pictureBox1);
-            this.grpCameraInfo.Location = new System.Drawing.Point(1017, 135);
-            this.grpCameraInfo.Name = "grpCameraInfo";
-            this.grpCameraInfo.Size = new System.Drawing.Size(368, 414);
-            this.grpCameraInfo.TabIndex = 22;
-            this.grpCameraInfo.TabStop = false;
-            this.grpCameraInfo.Text = "Associated Camera for the Selected Activity";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(19, 29);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(336, 257);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lblSelectedCamIp
-            // 
-            this.lblSelectedCamIp.AutoSize = true;
-            this.lblSelectedCamIp.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedCamIp.Location = new System.Drawing.Point(25, 310);
-            this.lblSelectedCamIp.Name = "lblSelectedCamIp";
-            this.lblSelectedCamIp.Size = new System.Drawing.Size(112, 25);
-            this.lblSelectedCamIp.TabIndex = 1;
-            this.lblSelectedCamIp.Text = "[IP Address]";
-            // 
-            // lblSelectedCamName
-            // 
-            this.lblSelectedCamName.AutoSize = true;
-            this.lblSelectedCamName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectedCamName.Location = new System.Drawing.Point(25, 349);
-            this.lblSelectedCamName.Name = "lblSelectedCamName";
-            this.lblSelectedCamName.Size = new System.Drawing.Size(144, 25);
-            this.lblSelectedCamName.TabIndex = 2;
-            this.lblSelectedCamName.Text = "[Camera Name]";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -680,6 +680,9 @@ namespace Simple_ALE_Browser
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.grpCameraInfo.ResumeLayout(false);
+            this.grpCameraInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picCamPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxRows)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.olvUserAuditResult)).EndInit();
             this.grpConnectInfo.ResumeLayout(false);
@@ -690,9 +693,6 @@ namespace Simple_ALE_Browser
             this.groupBox2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.grpCameraInfo.ResumeLayout(false);
-            this.grpCameraInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -751,7 +751,7 @@ namespace Simple_ALE_Browser
         private System.Windows.Forms.GroupBox grpCameraInfo;
         private System.Windows.Forms.Label lblSelectedCamName;
         private System.Windows.Forms.Label lblSelectedCamIp;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picCamPreview;
     }
 }
 
