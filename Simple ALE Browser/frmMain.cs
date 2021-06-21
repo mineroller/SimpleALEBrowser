@@ -3,16 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.IO;
 using System.Windows.Forms;
-using Simple_ALE_Browser.OnvifMedia2;
-using Color = System.Drawing.Color;
-using System.ServiceModel.Channels;
-using System.ServiceModel;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace Simple_ALE_Browser
 {
@@ -266,6 +260,11 @@ namespace Simple_ALE_Browser
                 dpkToTime.Value = DateTime.Now;
 
                 tabControl1.Enabled = true;
+                
+                SimplerAES aes = new SimplerAES();
+                txtOnvifCustomLogin.Text = _sabSettings.OnvifLogin;
+                txtOnvifCustomPass.Text = aes.Decrypt(_sabSettings.OnvifPassword);
+                numOnvifCustomPrf.Value = _sabSettings.OnvifProfileNo;
             }
         }
 
@@ -446,6 +445,7 @@ namespace Simple_ALE_Browser
                         lblObjectType.Text = "Login-Logout";
                         lblSelectedCamName.Text = "Username: " + _uar.ObjectName;
                         lblSelectedCamIp.Text = "(No associated camera)";
+                        ResetSnapshotImage();
                         break;
                     case 67:
                     case 68:
@@ -453,11 +453,13 @@ namespace Simple_ALE_Browser
                         lblObjectType.Text = "Alarm Zone";
                         lblSelectedCamName.Text = _uar.ObjectName;
                         lblSelectedCamIp.Text = "(No associated camera)";
+                        
                         break;
                     case 81:
                         lblObjectType.Text = "Bookmark";
                         lblSelectedCamName.Text = _uar.ObjectName;
-                        lblSelectedCamIp.Text = "(No associated camera)";
+                        lblSelectedCamIp.Text = _uar.ConvertedIP.ToString();
+                        DisplaySnapshotImage(_uar.ConvertedIP.ToString());
                         break;
                     case 10:
                     case 13:
@@ -465,12 +467,14 @@ namespace Simple_ALE_Browser
                         lblObjectType.Text = "Exports";
                         lblSelectedCamName.Text = _uar.ObjectName;
                         lblSelectedCamIp.Text = _uar.ConvertedIP.ToString();
+                        DisplaySnapshotImage(_uar.ConvertedIP.ToString());
                         break;
                     case 51:
                     case 52:
                         lblObjectType.Text = "Playback Failed or Denied";
                         lblSelectedCamName.Text = _uar.ObjectName;
                         lblSelectedCamIp.Text = _uar.ConvertedIP.ToString();
+                        DisplaySnapshotImage(_uar.ConvertedIP.ToString());
                         break;
                     case 35:
                     case 36:
@@ -478,6 +482,7 @@ namespace Simple_ALE_Browser
                         lblObjectType.Text = "Playback Success";
                         lblSelectedCamName.Text = _uar.ObjectName;
                         lblSelectedCamIp.Text = _uar.ConvertedIP.ToString();
+                        DisplaySnapshotImage(_uar.ConvertedIP.ToString());
                         break;
                     case 60:
                     case 61:
@@ -485,11 +490,13 @@ namespace Simple_ALE_Browser
                         lblObjectType.Text = "Camera Live Stream";
                         lblSelectedCamName.Text = _uar.ObjectName;
                         lblSelectedCamIp.Text = _uar.ConvertedIP.ToString();
+                        DisplaySnapshotImage(_uar.ConvertedIP.ToString());
                         break;
                     case 88:
                         lblObjectType.Text = "Incident File Created";
                         lblSelectedCamName.Text = _uar.ObjectName;
                         lblSelectedCamIp.Text = "(No associated camera)";
+                        ResetSnapshotImage();
                         break;
                     case 78:
                     case 79:
@@ -497,51 +504,67 @@ namespace Simple_ALE_Browser
                         lblObjectType.Text = "Permission Changed";
                         lblSelectedCamName.Text = _uar.ObjectName;
                         lblSelectedCamIp.Text = "(No associated camera)";
+                        ResetSnapshotImage();
                         break;
                 }
 
             }            
         }
 
-        private async void chkPreviewCamera_CheckedChanged(object sender, EventArgs e)
+        private void ResetSnapshotImage()
         {
-            string _endpoint = "http://192.168.81.22:80/onvif/Media";
-            try
-            {
-                string _snapshotURI = await GetONVIFSnapshotURI(_endpoint);
-                MessageBox.Show(_snapshotURI);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }                                 
+            picCamPreview.Image.Dispose();
+            picCamPreview.Image = picCamPreview.InitialImage;
         }
 
-        private async Task<string> GetONVIFSnapshotURI(string _camEndpoint)
+        private void DisplaySnapshotImage(string _ip)
         {
+            if (chkPreviewCamera.Checked)
+            {
+                this.Cursor = Cursors.WaitCursor;                
 
-            // SO Answer:
-            // https://stackoverflow.com/questions/32779467/onvif-api-capture-image-in-c-sharp
+                string _onvifuser = txtOnvifCustomLogin.Text;
+                string _onvifpwd = txtOnvifCustomPass.Text;
+                string _endpoint = "http://" + _ip + "/onvif/device_service";
+                int _onvifprofile = (int)numOnvifCustomPrf.Value;
 
-            var messageElement = new TextMessageEncodingBindingElement();
-            messageElement.MessageVersion = MessageVersion.CreateVersion(EnvelopeVersion.Soap12, AddressingVersion.None);
+                picCamPreview.Image.Dispose();
 
-            HttpTransportBindingElement httpBinding = new HttpTransportBindingElement();
-            httpBinding.AuthenticationScheme = AuthenticationSchemes.Basic;
+                try
+                {
+                    string _snapshotURI = OnvifHelper.GetONVIFSnapshotURI(_endpoint, _onvifuser, _onvifpwd, _onvifprofile);
 
-            CustomBinding bind = new CustomBinding(messageElement, httpBinding);
-            EndpointAddress mediaAddress = new EndpointAddress(_camEndpoint);
+                    using (MemoryStream snapshotImg = OnvifHelper.DownloadSnapshot(_snapshotURI, _onvifuser, _onvifpwd))
+                    {
+                        picCamPreview.Image = new Bitmap(snapshotImg);
+                    }                                       
 
-            Media2Client sabM2Client = new Media2Client(bind, mediaAddress);
+                    lblOnvifSnapshotStatus.Text = "Snapshot Acquire SUCCESS";
+                    lblOnvifSnapshotStatus.BackColor = Color.DarkGreen;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Critical Error: " + ex.Message, "Snapshot Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    lblOnvifSnapshotStatus.Text = "Snapshot Acquire FAILED";
+                    lblOnvifSnapshotStatus.BackColor = Color.DarkRed;
+                    picCamPreview.Image = picCamPreview.ErrorImage;
+                }
+                finally
+                {
+                    this.Cursor = Cursors.Default;
+                }
+            }                       
+        }
 
-            sabM2Client.ClientCredentials.UserName.UserName = _sabSettings.OnvifLogin;
-            sabM2Client.ClientCredentials.UserName.Password = _sabSettings.OnvifPassword;            
+        private void chkPreviewCamera_CheckedChanged(object sender, EventArgs e)
+        {
+            picCamPreview.Image.Dispose();
+            picCamPreview.Image = picCamPreview.InitialImage;
+            lblOnvifSnapshotStatus.Text = "Ready for Snapshots";
+            lblOnvifSnapshotStatus.BackColor = Color.DarkGray;
             
-            GetProfilesResponse profiles = await sabM2Client.GetProfilesAsync(null, null);
-            string _token = profiles.Profiles[1].token;
-            string _mediaUri = sabM2Client.GetSnapshotUri(_token);
-                       
-            return _mediaUri;
         }
+
+        
     }
 }

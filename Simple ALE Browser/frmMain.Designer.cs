@@ -33,6 +33,7 @@ namespace Simple_ALE_Browser
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpCameraInfo = new System.Windows.Forms.GroupBox();
+            this.chkPreviewCamera = new System.Windows.Forms.CheckBox();
             this.lblObjectType = new System.Windows.Forms.Label();
             this.lblSelectedCamName = new System.Windows.Forms.Label();
             this.lblSelectedCamIp = new System.Windows.Forms.Label();
@@ -83,7 +84,14 @@ namespace Simple_ALE_Browser
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.chkPreviewCamera = new System.Windows.Forms.CheckBox();
+            this.txtOnvifCustomLogin = new System.Windows.Forms.TextBox();
+            this.txtOnvifCustomPass = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.numOnvifCustomPrf = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblOnvifSnapshotStatus = new System.Windows.Forms.Label();
+            this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpCameraInfo.SuspendLayout();
@@ -95,6 +103,7 @@ namespace Simple_ALE_Browser
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numOnvifCustomPrf)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -147,6 +156,13 @@ namespace Simple_ALE_Browser
             // grpCameraInfo
             // 
             this.grpCameraInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpCameraInfo.Controls.Add(this.lblOnvifSnapshotStatus);
+            this.grpCameraInfo.Controls.Add(this.label12);
+            this.grpCameraInfo.Controls.Add(this.numOnvifCustomPrf);
+            this.grpCameraInfo.Controls.Add(this.label11);
+            this.grpCameraInfo.Controls.Add(this.label10);
+            this.grpCameraInfo.Controls.Add(this.txtOnvifCustomPass);
+            this.grpCameraInfo.Controls.Add(this.txtOnvifCustomLogin);
             this.grpCameraInfo.Controls.Add(this.chkPreviewCamera);
             this.grpCameraInfo.Controls.Add(this.lblObjectType);
             this.grpCameraInfo.Controls.Add(this.lblSelectedCamName);
@@ -158,6 +174,17 @@ namespace Simple_ALE_Browser
             this.grpCameraInfo.TabIndex = 22;
             this.grpCameraInfo.TabStop = false;
             this.grpCameraInfo.Text = "Associated Object for the Selected Activity";
+            // 
+            // chkPreviewCamera
+            // 
+            this.chkPreviewCamera.AutoSize = true;
+            this.chkPreviewCamera.Location = new System.Drawing.Point(16, 194);
+            this.chkPreviewCamera.Name = "chkPreviewCamera";
+            this.chkPreviewCamera.Size = new System.Drawing.Size(160, 21);
+            this.chkPreviewCamera.TabIndex = 4;
+            this.chkPreviewCamera.Text = "Preview Camera Image";
+            this.chkPreviewCamera.UseVisualStyleBackColor = true;
+            this.chkPreviewCamera.CheckedChanged += new System.EventHandler(this.chkPreviewCamera_CheckedChanged);
             // 
             // lblObjectType
             // 
@@ -340,6 +367,7 @@ namespace Simple_ALE_Browser
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn1);
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn4);
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn2);
+            this.olvUserAuditResult.AllColumns.Add(this.olvColumn5);
             this.olvUserAuditResult.AllColumns.Add(this.olvColumn3);
             this.olvUserAuditResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -349,6 +377,7 @@ namespace Simple_ALE_Browser
             this.olvColumn1,
             this.olvColumn4,
             this.olvColumn2,
+            this.olvColumn5,
             this.olvColumn3});
             this.olvUserAuditResult.Cursor = System.Windows.Forms.Cursors.Default;
             this.olvUserAuditResult.FullRowSelect = true;
@@ -541,19 +570,19 @@ namespace Simple_ALE_Browser
             // configureSQLConnectionToolStripMenuItem
             // 
             this.configureSQLConnectionToolStripMenuItem.Name = "configureSQLConnectionToolStripMenuItem";
-            this.configureSQLConnectionToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.configureSQLConnectionToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.configureSQLConnectionToolStripMenuItem.Text = "Configure SQL Connection...";
             this.configureSQLConnectionToolStripMenuItem.Click += new System.EventHandler(this.configureSQLConnectionToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(222, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(225, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -568,7 +597,7 @@ namespace Simple_ALE_Browser
             // aboutSimpleAuditLogViewerToolStripMenuItem
             // 
             this.aboutSimpleAuditLogViewerToolStripMenuItem.Name = "aboutSimpleAuditLogViewerToolStripMenuItem";
-            this.aboutSimpleAuditLogViewerToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.aboutSimpleAuditLogViewerToolStripMenuItem.Size = new System.Drawing.Size(254, 22);
             this.aboutSimpleAuditLogViewerToolStripMenuItem.Text = "About Simple Audit Log Viewer...";
             this.aboutSimpleAuditLogViewerToolStripMenuItem.Click += new System.EventHandler(this.aboutSimpleAuditLogViewerToolStripMenuItem_Click);
             // 
@@ -672,25 +701,90 @@ namespace Simple_ALE_Browser
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(96, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(97, 17);
             this.toolStripStatusLabel1.Text = "[Not Connected]";
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(96, 17);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(97, 17);
             this.toolStripStatusLabel2.Text = "[Not Connected]";
             // 
-            // chkPreviewCamera
+            // txtOnvifCustomLogin
             // 
-            this.chkPreviewCamera.AutoSize = true;
-            this.chkPreviewCamera.Location = new System.Drawing.Point(16, 194);
-            this.chkPreviewCamera.Name = "chkPreviewCamera";
-            this.chkPreviewCamera.Size = new System.Drawing.Size(160, 21);
-            this.chkPreviewCamera.TabIndex = 4;
-            this.chkPreviewCamera.Text = "Preview Camera Image";
-            this.chkPreviewCamera.UseVisualStyleBackColor = true;
-            this.chkPreviewCamera.CheckedChanged += new System.EventHandler(this.chkPreviewCamera_CheckedChanged);
+            this.txtOnvifCustomLogin.Location = new System.Drawing.Point(16, 472);
+            this.txtOnvifCustomLogin.Name = "txtOnvifCustomLogin";
+            this.txtOnvifCustomLogin.Size = new System.Drawing.Size(100, 25);
+            this.txtOnvifCustomLogin.TabIndex = 5;
+            // 
+            // txtOnvifCustomPass
+            // 
+            this.txtOnvifCustomPass.Location = new System.Drawing.Point(122, 472);
+            this.txtOnvifCustomPass.Name = "txtOnvifCustomPass";
+            this.txtOnvifCustomPass.Size = new System.Drawing.Size(100, 25);
+            this.txtOnvifCustomPass.TabIndex = 6;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(13, 454);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(67, 17);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Username";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(119, 454);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 17);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Password";
+            // 
+            // numOnvifCustomPrf
+            // 
+            this.numOnvifCustomPrf.Location = new System.Drawing.Point(163, 507);
+            this.numOnvifCustomPrf.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numOnvifCustomPrf.Name = "numOnvifCustomPrf";
+            this.numOnvifCustomPrf.Size = new System.Drawing.Size(98, 25);
+            this.numOnvifCustomPrf.TabIndex = 9;
+            this.numOnvifCustomPrf.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(16, 509);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(141, 17);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "ONVIF Profile Number:";
+            // 
+            // lblOnvifSnapshotStatus
+            // 
+            this.lblOnvifSnapshotStatus.BackColor = System.Drawing.Color.Gray;
+            this.lblOnvifSnapshotStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOnvifSnapshotStatus.ForeColor = System.Drawing.Color.White;
+            this.lblOnvifSnapshotStatus.Location = new System.Drawing.Point(16, 426);
+            this.lblOnvifSnapshotStatus.Name = "lblOnvifSnapshotStatus";
+            this.lblOnvifSnapshotStatus.Size = new System.Drawing.Size(339, 17);
+            this.lblOnvifSnapshotStatus.TabIndex = 11;
+            this.lblOnvifSnapshotStatus.Text = "[Camera Status]";
+            this.lblOnvifSnapshotStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // olvColumn5
+            // 
+            this.olvColumn5.AspectName = "ObjectName";
+            this.olvColumn5.Text = "Object";
+            this.olvColumn5.Width = 182;
             // 
             // frmMain
             // 
@@ -728,6 +822,7 @@ namespace Simple_ALE_Browser
             this.groupBox2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numOnvifCustomPrf)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -789,6 +884,14 @@ namespace Simple_ALE_Browser
         private System.Windows.Forms.PictureBox picCamPreview;
         private System.Windows.Forms.Label lblObjectType;
         private System.Windows.Forms.CheckBox chkPreviewCamera;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown numOnvifCustomPrf;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtOnvifCustomPass;
+        private System.Windows.Forms.TextBox txtOnvifCustomLogin;
+        private System.Windows.Forms.Label lblOnvifSnapshotStatus;
+        private BrightIdeasSoftware.OLVColumn olvColumn5;
     }
 }
 

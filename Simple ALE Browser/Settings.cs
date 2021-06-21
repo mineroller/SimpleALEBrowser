@@ -79,6 +79,7 @@ namespace Simple_ALE_Browser
             txtPassword.Text = aes.Decrypt(_settings.Password);
             txtOnvifLogin.Text = _settings.OnvifLogin;
             txtOnvifPassword.Text = aes.Decrypt(_settings.OnvifPassword);
+            numOnvifProfileNo.Value = _settings.OnvifProfileNo;
 
         }
 
@@ -93,6 +94,7 @@ namespace Simple_ALE_Browser
             _settings.Password = aes.Encrypt(txtPassword.Text);
             _settings.OnvifLogin = txtOnvifLogin.Text;
             _settings.OnvifPassword = aes.Encrypt(txtOnvifPassword.Text);
+            _settings.OnvifProfileNo = (int)numOnvifProfileNo.Value;
 
             return _settings;
 
@@ -105,13 +107,14 @@ namespace Simple_ALE_Browser
             SABSettings _default = new SABSettings
             {
                 IsConfigured = true,
-                ServerName = "SQL2019",
+                ServerName = "SQLSVR",
                 InstanceName = "SQLEXPRESS",
-                DatabaseName = "IV_ALEV",
-                LoginName = "ivaudituser",
-                Password = aes.Encrypt("Pel2899100@"),
+                DatabaseName = "ALEVDB",
+                LoginName = "audituser",
+                Password = aes.Encrypt("password"),
                 OnvifLogin = "admin",
-                OnvifPassword = aes.Encrypt("admin")
+                OnvifPassword = aes.Encrypt("admin"),
+                OnvifProfileNo = 2
             };
 
             return _default;

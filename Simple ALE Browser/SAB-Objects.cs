@@ -66,5 +66,6 @@ namespace Simple_ALE_Browser
         public string Password { get; set; }
         public string OnvifLogin { get; set; }
         public string OnvifPassword { get; set; }
+        public int OnvifProfileNo { get; set; }
     }
 }

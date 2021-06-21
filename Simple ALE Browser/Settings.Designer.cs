@@ -56,10 +56,13 @@ namespace Simple_ALE_Browser
             this.chkOnvifUnmask = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtOnvifPassword = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.numOnvifProfileNo = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numOnvifProfileNo)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -239,7 +242,7 @@ namespace Simple_ALE_Browser
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(73, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(75, 17);
             this.toolStripStatusLabel1.Text = "[Setting File]";
             // 
             // groupBox1
@@ -255,7 +258,7 @@ namespace Simple_ALE_Browser
             this.groupBox1.Controls.Add(this.chkUnmask);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtPassword);
-            this.groupBox1.Location = new System.Drawing.Point(12, 121);
+            this.groupBox1.Location = new System.Drawing.Point(13, 133);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(370, 199);
             this.groupBox1.TabIndex = 19;
@@ -264,17 +267,19 @@ namespace Simple_ALE_Browser
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.numOnvifProfileNo);
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.txtOnvifLogin);
             this.groupBox2.Controls.Add(this.chkOnvifUnmask);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtOnvifPassword);
-            this.groupBox2.Location = new System.Drawing.Point(388, 121);
+            this.groupBox2.Location = new System.Drawing.Point(389, 133);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(257, 199);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "ONVIF Authentication";
+            this.groupBox2.Text = "Snapshot Default Settings";
             // 
             // label8
             // 
@@ -320,6 +325,32 @@ namespace Simple_ALE_Browser
             this.txtOnvifPassword.TabIndex = 17;
             this.txtOnvifPassword.UseSystemPasswordChar = true;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(31, 135);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 15);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "Default Profile:";
+            // 
+            // numOnvifProfileNo
+            // 
+            this.numOnvifProfileNo.Location = new System.Drawing.Point(122, 133);
+            this.numOnvifProfileNo.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numOnvifProfileNo.Name = "numOnvifProfileNo";
+            this.numOnvifProfileNo.Size = new System.Drawing.Size(98, 23);
+            this.numOnvifProfileNo.TabIndex = 20;
+            this.numOnvifProfileNo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -350,6 +381,7 @@ namespace Simple_ALE_Browser
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numOnvifProfileNo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,5 +416,7 @@ namespace Simple_ALE_Browser
         private System.Windows.Forms.CheckBox chkOnvifUnmask;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtOnvifPassword;
+        private System.Windows.Forms.NumericUpDown numOnvifProfileNo;
+        private System.Windows.Forms.Label label10;
     }
 }
