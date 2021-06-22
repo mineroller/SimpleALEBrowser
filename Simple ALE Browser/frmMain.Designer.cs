@@ -33,6 +33,13 @@ namespace Simple_ALE_Browser
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpCameraInfo = new System.Windows.Forms.GroupBox();
+            this.lblOnvifSnapshotStatus = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.numOnvifCustomPrf = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtOnvifCustomPass = new System.Windows.Forms.TextBox();
+            this.txtOnvifCustomLogin = new System.Windows.Forms.TextBox();
             this.chkPreviewCamera = new System.Windows.Forms.CheckBox();
             this.lblObjectType = new System.Windows.Forms.Label();
             this.lblSelectedCamName = new System.Windows.Forms.Label();
@@ -53,6 +60,7 @@ namespace Simple_ALE_Browser
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.btnQueryUser = new System.Windows.Forms.Button();
             this.dpkToDate = new System.Windows.Forms.DateTimePicker();
@@ -84,17 +92,10 @@ namespace Simple_ALE_Browser
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtOnvifCustomLogin = new System.Windows.Forms.TextBox();
-            this.txtOnvifCustomPass = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.numOnvifCustomPrf = new System.Windows.Forms.NumericUpDown();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblOnvifSnapshotStatus = new System.Windows.Forms.Label();
-            this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpCameraInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numOnvifCustomPrf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCamPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxRows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.olvUserAuditResult)).BeginInit();
@@ -103,7 +104,6 @@ namespace Simple_ALE_Browser
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numOnvifCustomPrf)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -174,6 +174,77 @@ namespace Simple_ALE_Browser
             this.grpCameraInfo.TabIndex = 22;
             this.grpCameraInfo.TabStop = false;
             this.grpCameraInfo.Text = "Associated Object for the Selected Activity";
+            // 
+            // lblOnvifSnapshotStatus
+            // 
+            this.lblOnvifSnapshotStatus.BackColor = System.Drawing.Color.Gray;
+            this.lblOnvifSnapshotStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOnvifSnapshotStatus.ForeColor = System.Drawing.Color.White;
+            this.lblOnvifSnapshotStatus.Location = new System.Drawing.Point(16, 426);
+            this.lblOnvifSnapshotStatus.Name = "lblOnvifSnapshotStatus";
+            this.lblOnvifSnapshotStatus.Size = new System.Drawing.Size(339, 17);
+            this.lblOnvifSnapshotStatus.TabIndex = 11;
+            this.lblOnvifSnapshotStatus.Text = "[Camera Status]";
+            this.lblOnvifSnapshotStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(16, 509);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(141, 17);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "ONVIF Profile Number:";
+            // 
+            // numOnvifCustomPrf
+            // 
+            this.numOnvifCustomPrf.Location = new System.Drawing.Point(163, 507);
+            this.numOnvifCustomPrf.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numOnvifCustomPrf.Name = "numOnvifCustomPrf";
+            this.numOnvifCustomPrf.Size = new System.Drawing.Size(98, 25);
+            this.numOnvifCustomPrf.TabIndex = 9;
+            this.numOnvifCustomPrf.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(119, 454);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 17);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Password";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(13, 454);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(67, 17);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Username";
+            // 
+            // txtOnvifCustomPass
+            // 
+            this.txtOnvifCustomPass.Location = new System.Drawing.Point(122, 472);
+            this.txtOnvifCustomPass.Name = "txtOnvifCustomPass";
+            this.txtOnvifCustomPass.Size = new System.Drawing.Size(100, 25);
+            this.txtOnvifCustomPass.TabIndex = 6;
+            this.txtOnvifCustomPass.UseSystemPasswordChar = true;
+            // 
+            // txtOnvifCustomLogin
+            // 
+            this.txtOnvifCustomLogin.Location = new System.Drawing.Point(16, 472);
+            this.txtOnvifCustomLogin.Name = "txtOnvifCustomLogin";
+            this.txtOnvifCustomLogin.Size = new System.Drawing.Size(100, 25);
+            this.txtOnvifCustomLogin.TabIndex = 5;
             // 
             // chkPreviewCamera
             // 
@@ -409,6 +480,12 @@ namespace Simple_ALE_Browser
             this.olvColumn2.AspectName = "ComputerName";
             this.olvColumn2.Text = "Workstation PC";
             this.olvColumn2.Width = 240;
+            // 
+            // olvColumn5
+            // 
+            this.olvColumn5.AspectName = "ObjectName";
+            this.olvColumn5.Text = "Object";
+            this.olvColumn5.Width = 182;
             // 
             // olvColumn3
             // 
@@ -710,82 +787,6 @@ namespace Simple_ALE_Browser
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(97, 17);
             this.toolStripStatusLabel2.Text = "[Not Connected]";
             // 
-            // txtOnvifCustomLogin
-            // 
-            this.txtOnvifCustomLogin.Location = new System.Drawing.Point(16, 472);
-            this.txtOnvifCustomLogin.Name = "txtOnvifCustomLogin";
-            this.txtOnvifCustomLogin.Size = new System.Drawing.Size(100, 25);
-            this.txtOnvifCustomLogin.TabIndex = 5;
-            // 
-            // txtOnvifCustomPass
-            // 
-            this.txtOnvifCustomPass.Location = new System.Drawing.Point(122, 472);
-            this.txtOnvifCustomPass.Name = "txtOnvifCustomPass";
-            this.txtOnvifCustomPass.Size = new System.Drawing.Size(100, 25);
-            this.txtOnvifCustomPass.TabIndex = 6;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 454);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 17);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "Username";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(119, 454);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(64, 17);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "Password";
-            // 
-            // numOnvifCustomPrf
-            // 
-            this.numOnvifCustomPrf.Location = new System.Drawing.Point(163, 507);
-            this.numOnvifCustomPrf.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numOnvifCustomPrf.Name = "numOnvifCustomPrf";
-            this.numOnvifCustomPrf.Size = new System.Drawing.Size(98, 25);
-            this.numOnvifCustomPrf.TabIndex = 9;
-            this.numOnvifCustomPrf.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 509);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(141, 17);
-            this.label12.TabIndex = 10;
-            this.label12.Text = "ONVIF Profile Number:";
-            // 
-            // lblOnvifSnapshotStatus
-            // 
-            this.lblOnvifSnapshotStatus.BackColor = System.Drawing.Color.Gray;
-            this.lblOnvifSnapshotStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOnvifSnapshotStatus.ForeColor = System.Drawing.Color.White;
-            this.lblOnvifSnapshotStatus.Location = new System.Drawing.Point(16, 426);
-            this.lblOnvifSnapshotStatus.Name = "lblOnvifSnapshotStatus";
-            this.lblOnvifSnapshotStatus.Size = new System.Drawing.Size(339, 17);
-            this.lblOnvifSnapshotStatus.TabIndex = 11;
-            this.lblOnvifSnapshotStatus.Text = "[Camera Status]";
-            this.lblOnvifSnapshotStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // olvColumn5
-            // 
-            this.olvColumn5.AspectName = "ObjectName";
-            this.olvColumn5.Text = "Object";
-            this.olvColumn5.Width = 182;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -811,6 +812,7 @@ namespace Simple_ALE_Browser
             this.tabPage1.PerformLayout();
             this.grpCameraInfo.ResumeLayout(false);
             this.grpCameraInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numOnvifCustomPrf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCamPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMaxRows)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.olvUserAuditResult)).EndInit();
@@ -822,7 +824,6 @@ namespace Simple_ALE_Browser
             this.groupBox2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numOnvifCustomPrf)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
