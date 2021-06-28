@@ -121,13 +121,16 @@
   <data name="About_Me" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\About-Me.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="alert_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\alert-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Graphicloads_100_Flat_Zoom_search_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Graphicloads-100-Flat-Zoom-search-2.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IndigoVision_MS_FullColour_RGB_WEBSITE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="icnAlarm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\alert-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icnLargeX" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\no-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgIvLogoMain" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IndigoVision_MS_FullColour_RGB_WEBSITE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LegoMan_withBaby" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -135,9 +138,6 @@
   </data>
   <data name="Mini1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mini1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="no_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\no-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="settings_circle_blue_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\settings-circle-blue-128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

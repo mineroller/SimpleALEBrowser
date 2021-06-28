@@ -71,16 +71,6 @@ namespace Simple_ALE_Browser.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap alert_icon {
-            get {
-                object obj = ResourceManager.GetObject("alert_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Graphicloads_100_Flat_Zoom_search_2 {
@@ -93,9 +83,29 @@ namespace Simple_ALE_Browser.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap IndigoVision_MS_FullColour_RGB_WEBSITE {
+        internal static System.Drawing.Bitmap icnAlarm {
             get {
-                object obj = ResourceManager.GetObject("IndigoVision_MS_FullColour_RGB_WEBSITE", resourceCulture);
+                object obj = ResourceManager.GetObject("icnAlarm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icnLargeX {
+            get {
+                object obj = ResourceManager.GetObject("icnLargeX", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgIvLogoMain {
+            get {
+                object obj = ResourceManager.GetObject("imgIvLogoMain", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,16 +126,6 @@ namespace Simple_ALE_Browser.Properties {
         internal static System.Drawing.Bitmap Mini1 {
             get {
                 object obj = ResourceManager.GetObject("Mini1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap no_icon {
-            get {
-                object obj = ResourceManager.GetObject("no_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

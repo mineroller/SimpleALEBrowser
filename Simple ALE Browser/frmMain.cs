@@ -282,6 +282,7 @@ namespace Simple_ALE_Browser
             _actionList.Add(new AlevAction("Live Video", 60, 61, 62));
             _actionList.Add(new AlevAction("Export Incident", 88, 0, 0));
             _actionList.Add(new AlevAction("Change Permissions", 78, 79, 80));
+            _actionList.Add(new AlevAction("Warning Messages", 7, 0, 0));
 
             return _actionList;
         }
@@ -514,7 +515,7 @@ namespace Simple_ALE_Browser
         private void ResetSnapshotImage()
         {
             picCamPreview.Image.Dispose();
-            picCamPreview.Image = picCamPreview.InitialImage;
+            picCamPreview.Image = Properties.Resources.imgIvLogoMain;
         }
 
         private void DisplaySnapshotImage(string _ip)
@@ -547,7 +548,7 @@ namespace Simple_ALE_Browser
                     MessageBox.Show("Critical Error: " + ex.Message, "Snapshot Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     lblOnvifSnapshotStatus.Text = "Snapshot Acquire FAILED";
                     lblOnvifSnapshotStatus.BackColor = Color.DarkRed;
-                    picCamPreview.Image = picCamPreview.ErrorImage;
+                    picCamPreview.Image = Properties.Resources.icnLargeX;
                 }
                 finally
                 {
@@ -559,7 +560,7 @@ namespace Simple_ALE_Browser
         private void chkPreviewCamera_CheckedChanged(object sender, EventArgs e)
         {
             picCamPreview.Image.Dispose();
-            picCamPreview.Image = picCamPreview.InitialImage;
+            picCamPreview.Image = Properties.Resources.imgIvLogoMain;
             lblOnvifSnapshotStatus.Text = "Ready for Snapshots";
             lblOnvifSnapshotStatus.BackColor = Color.DarkGray;
             

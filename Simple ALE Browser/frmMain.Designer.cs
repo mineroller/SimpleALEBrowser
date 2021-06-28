@@ -69,8 +69,6 @@ namespace Simple_ALE_Browser
             this.dpkFromDate = new System.Windows.Forms.DateTimePicker();
             this.cmbUserList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnInit = new System.Windows.Forms.Button();
             this.grpConnectInfo = new System.Windows.Forms.GroupBox();
             this.lblStatusDisp = new System.Windows.Forms.Label();
@@ -112,8 +110,6 @@ namespace Simple_ALE_Browser
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Enabled = false;
             this.tabControl1.Location = new System.Drawing.Point(12, 118);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -293,9 +289,9 @@ namespace Simple_ALE_Browser
             // picCamPreview
             // 
             this.picCamPreview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picCamPreview.ErrorImage = global::Simple_ALE_Browser.Properties.Resources.no_icon;
-            this.picCamPreview.Image = global::Simple_ALE_Browser.Properties.Resources.IndigoVision_MS_FullColour_RGB_WEBSITE;
-            this.picCamPreview.InitialImage = global::Simple_ALE_Browser.Properties.Resources.IndigoVision_MS_FullColour_RGB_WEBSITE;
+            this.picCamPreview.ErrorImage = global::Simple_ALE_Browser.Properties.Resources.icnLargeX;
+            this.picCamPreview.Image = global::Simple_ALE_Browser.Properties.Resources.imgIvLogoMain;
+            this.picCamPreview.InitialImage = global::Simple_ALE_Browser.Properties.Resources.imgIvLogoMain;
             this.picCamPreview.Location = new System.Drawing.Point(16, 221);
             this.picCamPreview.Name = "picCamPreview";
             this.picCamPreview.Size = new System.Drawing.Size(339, 202);
@@ -563,26 +559,6 @@ namespace Simple_ALE_Browser
             this.label1.TabIndex = 0;
             this.label1.Text = "1. This User:";
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.tabPage2.Size = new System.Drawing.Size(1392, 686);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Workstation Audit";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 26);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1392, 686);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Event Audit";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // btnInit
             // 
             this.btnInit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -833,7 +809,6 @@ namespace Simple_ALE_Browser
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox grpConnectInfo;
         private System.Windows.Forms.Button btnQueryUser;
         private System.Windows.Forms.DateTimePicker dpkToDate;
@@ -842,7 +817,6 @@ namespace Simple_ALE_Browser
         private System.Windows.Forms.DateTimePicker dpkFromDate;
         private System.Windows.Forms.ComboBox cmbUserList;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label lblStatusDisp;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem connectionToolStripMenuItem;
