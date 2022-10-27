@@ -180,9 +180,8 @@ namespace Simple_ALE_Browser
                         {
                             while (alevreader.Read())
                             {
-                                alev_users = alevreader.GetString(0);
+                                alev_users += alevreader.GetString(0);
                             }
-
                             List<AlevUser> alevuserlist = JsonConvert.DeserializeObject<List<AlevUser>>(alev_users);
 
                             foreach (AlevUser _user in alevuserlist)
@@ -206,7 +205,7 @@ namespace Simple_ALE_Browser
                             string alev_cc = "";
                             while (alevreader.Read())
                             {
-                                alev_cc = alevreader.GetString(0);
+                                alev_cc += alevreader.GetString(0);
                             }
 
                             List<AlevCC> alevcclist = JsonConvert.DeserializeObject<List<AlevCC>>(alev_cc);
