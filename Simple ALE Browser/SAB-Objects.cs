@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 
 namespace Simple_ALE_Browser
@@ -11,6 +12,12 @@ namespace Simple_ALE_Browser
     public class AlevCC
     {
         public string ComputerName { get; set; }        
+    }
+
+    public class InitQueryResponse
+    {
+        public List<AlevUser> Users { get; set; }
+        public List<AlevCC> CCs { get; set; }
     }
 
     public class AlevAction

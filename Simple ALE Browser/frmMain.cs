@@ -155,7 +155,7 @@ namespace Simple_ALE_Browser
             }
         }
 
-        private async void btnInit_Click(object sender, EventArgs e)
+        private void btnInit_Click(object sender, EventArgs e)
         {
             cmbUserList.Items.Clear();
             cmbComputerList.Items.Clear();
@@ -165,123 +165,44 @@ namespace Simple_ALE_Browser
             tabControl1.Enabled = false;
 
             string alev_cs = Helpers.GetConnStr(_sabSettings);
-            
-            try
+
+            if (bgwQuerySQLWorker.IsBusy)
             {
-                using (SqlConnection alevconn = new SqlConnection(alev_cs))
-                {
-                    await alevconn.OpenAsync();
-
-                    string query_userlist = "SELECT DISTINCT UserName from AuditEntry FOR JSON AUTO";
-                    using (SqlCommand alevcmd = new SqlCommand(query_userlist, alevconn))
-                    {
-                        string alev_users = "";
-                        using (SqlDataReader alevreader = await alevcmd.ExecuteReaderAsync())
-                        {
-                            while (alevreader.Read())
-                            {
-                                alev_users += alevreader.GetString(0);
-                            }
-                            List<AlevUser> alevuserlist = JsonConvert.DeserializeObject<List<AlevUser>>(alev_users);
-
-                            foreach (AlevUser _user in alevuserlist)
-                            {
-                                cmbUserList.Items.Add(_user.UserName);
-                            }
-                            cmbUserList.Items.Add("(Any)");
-                            cmbUserList.SelectedIndex = 0;
-                            cmbUserList.Enabled = true;
-                            lblStatusDisp.Text = "Total " + alevuserlist.Count().ToString() + " users found.";
-                            lblStatusDisp.ForeColor = Color.SpringGreen;
-                                                        
-                        }
-                    }
-
-                    string query_cclist = "SELECT DISTINCT ComputerName from AuditEntry FOR JSON AUTO";
-                    using (SqlCommand alevcmd = new SqlCommand(query_cclist, alevconn))
-                    {
-                        using (SqlDataReader alevreader = await alevcmd.ExecuteReaderAsync())
-                        {
-                            string alev_cc = "";
-                            while (alevreader.Read())
-                            {
-                                alev_cc += alevreader.GetString(0);
-                            }
-
-                            List<AlevCC> alevcclist = JsonConvert.DeserializeObject<List<AlevCC>>(alev_cc);
-
-                            foreach (AlevCC _cc in alevcclist)
-                            {
-                                cmbComputerList.Items.Add(_cc.ComputerName);
-                            }
-                            cmbComputerList.Items.Add("(Any)");
-                            cmbComputerList.SelectedIndex = 0;
-                            cmbComputerList.Enabled = true;
-                            lblStatusDisp.Text += "\nTotal " + alevcclist.Count().ToString() + " computers found.";
-                            lblStatusDisp.ForeColor = Color.SpringGreen;
-
-                        }
-                    }                    
-
-                }
+                MessageBox.Show("Another query is still in progress. Please wait", "Query Connection Busy", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Connection error:" + ex.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                lblStatusDisp.Text = "Error in SQL Query. Check connection to server.";
-                lblStatusDisp.ForeColor = Color.Red;
-            }
-            finally
-            {
-                List<AlevAction> _defActions = SetDefaultActionIds();
-
-                foreach (AlevAction _action in _defActions)
+                if (bgwInitSQLWorker.IsBusy)
                 {
-                    cmbActionId.Items.Add(_action);
+                    MessageBox.Show("Previous init is still in progress. Please wait", "Init Connection Busy", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
-
-                cmbActionId.DataSource = _defActions;
-                cmbActionId.DisplayMember = "Description";
-                cmbActionId.ValueMember = "InString";
-                cmbActionId.SelectedIndex = 0;                
-                cmbActionId.Enabled = true;
-
-                btnQueryUser.Enabled = true;
-                dpkFromDate.Enabled = true;
-                dpkFromTime.Enabled = true;
-                dpkToDate.Enabled = true;
-                dpkToTime.Enabled = true;
-
-                dpkFromDate.Value = DateTime.Now;
-                dpkFromTime.Value = DateTime.Now.AddMinutes(-30);
-
-                dpkToDate.Value = DateTime.Now;
-                dpkToTime.Value = DateTime.Now;
-
-                tabControl1.Enabled = true;
-                
-                SimplerAES aes = new SimplerAES();
-                txtOnvifCustomLogin.Text = _sabSettings.OnvifLogin;
-                txtOnvifCustomPass.Text = aes.Decrypt(_sabSettings.OnvifPassword);
-                numOnvifCustomPrf.Value = _sabSettings.OnvifProfileNo;
+                else
+                {
+                    picLoadingIcon.Visible = true;
+                    picLoadingIcon.Image = Properties.Resources.icnLoading;
+                    bgwInitSQLWorker.RunWorkerAsync(alev_cs);
+                }
             }
         }
 
         private List<AlevAction> SetDefaultActionIds()
         {            
-            List<AlevAction> _actionList = new List<AlevAction>();
-
-            _actionList.Add(new AlevAction("(Any)", 0, 0, 0));
-            _actionList.Add(new AlevAction("Login-Logout", 31, 33, 0));
-            _actionList.Add(new AlevAction("Alarm Received", 67, 68, 69));            
-            _actionList.Add(new AlevAction("Bookmark Added", 81, 0, 0));
-            _actionList.Add(new AlevAction("Recorded Video Fail/Denied", 51, 52, 0));
-            _actionList.Add(new AlevAction("Playback Video", 35, 36, 37));
-            _actionList.Add(new AlevAction("Export Video", 13, 28, 0));
-            _actionList.Add(new AlevAction("Live Video", 60, 61, 62));
-            _actionList.Add(new AlevAction("Export Incident", 88, 0, 0));
-            _actionList.Add(new AlevAction("Change Permissions", 78, 79, 80));
-            _actionList.Add(new AlevAction("Warning Messages", 7, 0, 0));
+            List<AlevAction> _actionList = new List<AlevAction>
+            {
+                new AlevAction("(Any)", 0, 0, 0),
+                new AlevAction("Login-Logout", 31, 33, 0),
+                new AlevAction("Alarm Received", 67, 68, 69),
+                new AlevAction("Bookmark Added", 81, 0, 0),
+                new AlevAction("Recorded Video Fail/Denied", 51, 52, 0),
+                new AlevAction("Playback Video", 35, 36, 37),
+                new AlevAction("Export Video", 13, 28, 0),
+                new AlevAction("Live Video", 60, 61, 62),
+                new AlevAction("Export Incident", 88, 0, 0),
+                new AlevAction("Change Permissions", 78, 79, 80),
+                new AlevAction("Warning Messages", 7, 0, 0)
+            };
 
             return _actionList;
         }
@@ -565,6 +486,154 @@ namespace Simple_ALE_Browser
             
         }
 
-        
+        private void bgwInitSQLWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+
+            string alev_cs = e.Argument as string;
+            InitQueryResponse iqr = new InitQueryResponse();
+
+            using (SqlConnection alevconn = new SqlConnection(alev_cs))
+            {
+                alevconn.Open();
+
+                string query_userlist = "SELECT DISTINCT UserName from AuditEntry FOR JSON AUTO";
+
+                using (SqlCommand alevcmd = new SqlCommand(query_userlist, alevconn))
+                {
+                    string alev_users = "";
+                    using (SqlDataReader alevreader = alevcmd.ExecuteReader())
+                    {
+                        while (alevreader.Read())
+                        {
+                            alev_users += alevreader.GetString(0);
+                        }
+
+                        iqr.Users = JsonConvert.DeserializeObject<List<AlevUser>>(alev_users);
+                    }
+                }
+
+                bgwInitSQLWorker.ReportProgress(50, iqr);
+
+                string query_cclist = "SELECT DISTINCT ComputerName from AuditEntry FOR JSON AUTO";
+                using (SqlCommand alevcmd = new SqlCommand(query_cclist, alevconn))
+                {
+                    using (SqlDataReader alevreader = alevcmd.ExecuteReader())
+                    {
+                        string alev_cc = "";
+                        while (alevreader.Read())
+                        {
+                            alev_cc += alevreader.GetString(0);
+                        }
+
+                        iqr.CCs = JsonConvert.DeserializeObject<List<AlevCC>>(alev_cc);
+                    }
+                }
+
+                bgwInitSQLWorker.ReportProgress(100, iqr);
+            }           
+        }
+
+        private void bgwInitSQLWorker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+
+            InitQueryResponse _iqr = e.UserState as InitQueryResponse;
+            
+            if (e.ProgressPercentage == 50)
+            {
+
+                List<AlevUser> _users = _iqr.Users;
+
+                if (_users.Count > 0)
+                {
+                    foreach (AlevUser _u in _users)
+                    {
+                        cmbUserList.Items.Add(_u.UserName);
+                    }
+                }
+                cmbUserList.Items.Add("(Any)");
+                cmbUserList.SelectedIndex = 0;
+                cmbUserList.Enabled = true;
+                lblStatusDisp.Text = "Total " + _users.Count().ToString() + " users found.";
+                lblStatusDisp.ForeColor = Color.SpringGreen;
+            }
+            if (e.ProgressPercentage == 100)
+            {
+                List<AlevCC> _ccs = _iqr.CCs;
+
+                if (_ccs.Count > 0)
+                {
+                    foreach (AlevCC _cc in _ccs)
+                    {
+                        cmbComputerList.Items.Add(_cc.ComputerName);
+                    }
+                }
+
+                cmbComputerList.Items.Add("(Any)");
+                cmbComputerList.SelectedIndex = 0;
+                cmbComputerList.Enabled = true;
+                lblStatusDisp.Text += "\nTotal " + _ccs.Count().ToString() + " computers found.";
+                lblStatusDisp.ForeColor = Color.SpringGreen;
+
+            }        
+
+        }
+
+        private void bgwInitSQLWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                MessageBox.Show("Connection error:" + e.Error.Message, "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblStatusDisp.Text = "Error in SQL Query. Check connection to server.";
+                lblStatusDisp.ForeColor = Color.Red;
+            }
+            else
+            {
+                List<AlevAction> _defActions = SetDefaultActionIds();
+
+                foreach (AlevAction _action in _defActions)
+                {
+                    cmbActionId.Items.Add(_action);
+                }
+
+                cmbActionId.DataSource = _defActions;
+                cmbActionId.DisplayMember = "Description";
+                cmbActionId.ValueMember = "InString";
+                cmbActionId.SelectedIndex = 0;
+                cmbActionId.Enabled = true;
+
+                btnQueryUser.Enabled = true;
+                dpkFromDate.Enabled = true;
+                dpkFromTime.Enabled = true;
+                dpkToDate.Enabled = true;
+                dpkToTime.Enabled = true;
+
+                dpkFromDate.Value = DateTime.Now;
+                dpkFromTime.Value = DateTime.Now.AddHours(-1);
+
+                dpkToDate.Value = DateTime.Now;
+                dpkToTime.Value = DateTime.Now;
+
+                tabControl1.Enabled = true;
+
+                SimplerAES aes = new SimplerAES();
+                txtOnvifCustomLogin.Text = _sabSettings.OnvifLogin;
+                txtOnvifCustomPass.Text = aes.Decrypt(_sabSettings.OnvifPassword);
+                numOnvifCustomPrf.Value = _sabSettings.OnvifProfileNo;
+                
+                picLoadingIcon.Image = null;
+                picCamPreview.Visible = false;
+            }                    
+        }
+
+        private void olvUserAuditResult_DoubleClick(object sender, EventArgs e)
+        {
+            if (olvUserAuditResult.SelectedObjects.Count == 1)
+            {
+                UserAuditResult _uar = (UserAuditResult)olvUserAuditResult.SelectedObject;
+
+                frmAuditResultDetails formAUR = new frmAuditResultDetails(_uar);
+                formAUR.ShowDialog(this);
+            }
+        }
     }
 }

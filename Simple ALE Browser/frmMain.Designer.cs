@@ -80,6 +80,7 @@ namespace Simple_ALE_Browser
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutSimpleAuditLogViewerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.picLoadingIcon = new System.Windows.Forms.PictureBox();
             this.btnConnectSQL = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblOldestRow = new System.Windows.Forms.Label();
@@ -90,6 +91,8 @@ namespace Simple_ALE_Browser
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.bgwInitSQLWorker = new System.ComponentModel.BackgroundWorker();
+            this.bgwQuerySQLWorker = new System.ComponentModel.BackgroundWorker();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpCameraInfo.SuspendLayout();
@@ -100,6 +103,7 @@ namespace Simple_ALE_Browser
             this.grpConnectInfo.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLoadingIcon)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -458,6 +462,7 @@ namespace Simple_ALE_Browser
             this.olvUserAuditResult.UseCompatibleStateImageBehavior = false;
             this.olvUserAuditResult.View = System.Windows.Forms.View.Details;
             this.olvUserAuditResult.SelectedIndexChanged += new System.EventHandler(this.olvUserAuditResult_SelectedIndexChanged);
+            this.olvUserAuditResult.DoubleClick += new System.EventHandler(this.olvUserAuditResult_DoubleClick);
             // 
             // olvColumn1
             // 
@@ -564,7 +569,7 @@ namespace Simple_ALE_Browser
             this.btnInit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInit.Location = new System.Drawing.Point(22, 24);
             this.btnInit.Name = "btnInit";
-            this.btnInit.Size = new System.Drawing.Size(313, 39);
+            this.btnInit.Size = new System.Drawing.Size(257, 39);
             this.btnInit.TabIndex = 9;
             this.btnInit.Text = "Initialise / Refresh Audit Data";
             this.btnInit.UseVisualStyleBackColor = true;
@@ -656,6 +661,7 @@ namespace Simple_ALE_Browser
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.picLoadingIcon);
             this.groupBox1.Controls.Add(this.btnInit);
             this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(205, 29);
@@ -664,6 +670,16 @@ namespace Simple_ALE_Browser
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Initialise Browser";
+            // 
+            // picLoadingIcon
+            // 
+            this.picLoadingIcon.Location = new System.Drawing.Point(285, 18);
+            this.picLoadingIcon.Name = "picLoadingIcon";
+            this.picLoadingIcon.Size = new System.Drawing.Size(66, 53);
+            this.picLoadingIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLoadingIcon.TabIndex = 10;
+            this.picLoadingIcon.TabStop = false;
+            this.picLoadingIcon.Visible = false;
             // 
             // btnConnectSQL
             // 
@@ -763,6 +779,17 @@ namespace Simple_ALE_Browser
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(97, 17);
             this.toolStripStatusLabel2.Text = "[Not Connected]";
             // 
+            // bgwInitSQLWorker
+            // 
+            this.bgwInitSQLWorker.WorkerReportsProgress = true;
+            this.bgwInitSQLWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwInitSQLWorker_DoWork);
+            this.bgwInitSQLWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwInitSQLWorker_ProgressChanged);
+            this.bgwInitSQLWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwInitSQLWorker_RunWorkerCompleted);
+            // 
+            // bgwQuerySQLWorker
+            // 
+            this.bgwQuerySQLWorker.WorkerReportsProgress = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -796,6 +823,7 @@ namespace Simple_ALE_Browser
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLoadingIcon)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -867,6 +895,9 @@ namespace Simple_ALE_Browser
         private System.Windows.Forms.TextBox txtOnvifCustomLogin;
         private System.Windows.Forms.Label lblOnvifSnapshotStatus;
         private BrightIdeasSoftware.OLVColumn olvColumn5;
+        private System.ComponentModel.BackgroundWorker bgwInitSQLWorker;
+        private System.Windows.Forms.PictureBox picLoadingIcon;
+        private System.ComponentModel.BackgroundWorker bgwQuerySQLWorker;
     }
 }
 
