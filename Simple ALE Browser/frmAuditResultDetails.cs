@@ -26,6 +26,7 @@ namespace Simple_ALE_Browser
             lblObjectName.Text = _uar.ObjectName;  
             lblUserName.Text = _uar.UserName; 
             txtInformation.Text = _uar.Information;
+            lblActionId.Text = _uar.ActionId.ToString();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

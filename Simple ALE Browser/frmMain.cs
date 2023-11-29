@@ -201,7 +201,10 @@ namespace Simple_ALE_Browser
                 new AlevAction("Live Video", 60, 61, 62),
                 new AlevAction("Export Incident", 88, 0, 0),
                 new AlevAction("Change Permissions", 78, 79, 80),
-                new AlevAction("Warning Messages", 7, 0, 0)
+                new AlevAction("Warning Messages", 7, 0, 0),
+                new AlevAction("System Objects Changed", 75, 76, 77),
+                new AlevAction("Audit Log Connections",6,0,0),
+                new AlevAction("Site DB Connections",71,72,0)
             };
 
             return _actionList;
@@ -361,6 +364,11 @@ namespace Simple_ALE_Browser
             {                
                 switch (_uar.ActionId)
                 {
+                    case 6:
+                        lblObjectType.Text = "Audit Log Connection Issue";
+                        lblSelectedCamName.Text = "(No associated object)";
+                        lblSelectedCamIp.Text = "(No associated IP)";
+                        break;
                     case 31:
                     case 33:
                         lblObjectType.Text = "Login-Logout";
@@ -426,6 +434,19 @@ namespace Simple_ALE_Browser
                         lblSelectedCamName.Text = _uar.ObjectName;
                         lblSelectedCamIp.Text = "(No associated camera)";
                         ResetSnapshotImage();
+                        break;
+                    case 75:
+                    case 76:
+                    case 77:
+                        lblObjectType.Text = "System Objects Changed";
+                        lblSelectedCamName.Text = _uar.ObjectName;
+                        lblSelectedCamIp.Text = "(No associated IP)";
+                        break;
+                    case 71:
+                    case 72:
+                        lblObjectType.Text = "Site DB Connection Issue";
+                        lblSelectedCamName.Text = "(No associated object)";
+                        lblSelectedCamIp.Text = "(No associated IP)";
                         break;
                 }
 

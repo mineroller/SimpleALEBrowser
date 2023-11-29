@@ -305,9 +305,9 @@ namespace Simple_ALE_Browser
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1219, 65);
+            this.button1.Location = new System.Drawing.Point(747, 100);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 36);
+            this.button1.Size = new System.Drawing.Size(254, 29);
             this.button1.TabIndex = 21;
             this.button1.Text = "Export Result to CSV";
             this.button1.UseVisualStyleBackColor = true;
@@ -315,7 +315,7 @@ namespace Simple_ALE_Browser
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(753, 106);
+            this.label9.Location = new System.Drawing.Point(744, 71);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(179, 17);
             this.label9.TabIndex = 20;
@@ -328,7 +328,7 @@ namespace Simple_ALE_Browser
             0,
             0,
             0});
-            this.numMaxRows.Location = new System.Drawing.Point(938, 104);
+            this.numMaxRows.Location = new System.Drawing.Point(928, 69);
             this.numMaxRows.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -340,7 +340,7 @@ namespace Simple_ALE_Browser
             0,
             0});
             this.numMaxRows.Name = "numMaxRows";
-            this.numMaxRows.Size = new System.Drawing.Size(91, 25);
+            this.numMaxRows.Size = new System.Drawing.Size(73, 25);
             this.numMaxRows.TabIndex = 19;
             this.numMaxRows.ThousandsSeparator = true;
             this.numMaxRows.Value = new decimal(new int[] {
@@ -417,7 +417,7 @@ namespace Simple_ALE_Browser
             // 
             this.dpkToTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkToTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dpkToTime.Location = new System.Drawing.Point(488, 100);
+            this.dpkToTime.Location = new System.Drawing.Point(458, 94);
             this.dpkToTime.Name = "dpkToTime";
             this.dpkToTime.ShowUpDown = true;
             this.dpkToTime.Size = new System.Drawing.Size(250, 29);
@@ -427,7 +427,7 @@ namespace Simple_ALE_Browser
             // 
             this.dpkFromTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpkFromTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dpkFromTime.Location = new System.Drawing.Point(188, 100);
+            this.dpkFromTime.Location = new System.Drawing.Point(158, 94);
             this.dpkFromTime.Name = "dpkFromTime";
             this.dpkFromTime.ShowUpDown = true;
             this.dpkFromTime.Size = new System.Drawing.Size(250, 29);
@@ -496,12 +496,13 @@ namespace Simple_ALE_Browser
             // 
             // btnQueryUser
             // 
+            this.btnQueryUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnQueryUser.BackColor = System.Drawing.Color.DarkGreen;
             this.btnQueryUser.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQueryUser.ForeColor = System.Drawing.Color.Gold;
-            this.btnQueryUser.Location = new System.Drawing.Point(744, 62);
+            this.btnQueryUser.Location = new System.Drawing.Point(1101, 65);
             this.btnQueryUser.Name = "btnQueryUser";
-            this.btnQueryUser.Size = new System.Drawing.Size(285, 36);
+            this.btnQueryUser.Size = new System.Drawing.Size(274, 58);
             this.btnQueryUser.TabIndex = 6;
             this.btnQueryUser.Text = "Find User Activity";
             this.btnQueryUser.UseVisualStyleBackColor = false;
@@ -510,7 +511,7 @@ namespace Simple_ALE_Browser
             // dpkToDate
             // 
             this.dpkToDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpkToDate.Location = new System.Drawing.Point(488, 65);
+            this.dpkToDate.Location = new System.Drawing.Point(458, 59);
             this.dpkToDate.Name = "dpkToDate";
             this.dpkToDate.Size = new System.Drawing.Size(250, 29);
             this.dpkToDate.TabIndex = 5;
@@ -519,7 +520,7 @@ namespace Simple_ALE_Browser
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(444, 65);
+            this.label3.Location = new System.Drawing.Point(414, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 25);
             this.label3.TabIndex = 4;
@@ -529,7 +530,7 @@ namespace Simple_ALE_Browser
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(118, 65);
+            this.label2.Location = new System.Drawing.Point(88, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 25);
             this.label2.TabIndex = 3;
@@ -538,7 +539,7 @@ namespace Simple_ALE_Browser
             // dpkFromDate
             // 
             this.dpkFromDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpkFromDate.Location = new System.Drawing.Point(188, 65);
+            this.dpkFromDate.Location = new System.Drawing.Point(158, 59);
             this.dpkFromDate.Name = "dpkFromDate";
             this.dpkFromDate.Size = new System.Drawing.Size(250, 29);
             this.dpkFromDate.TabIndex = 2;

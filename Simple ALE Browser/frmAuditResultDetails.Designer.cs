@@ -40,6 +40,8 @@
             this.lblObjectName = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblActionId = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(448, 21);
+            this.label2.Location = new System.Drawing.Point(551, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(198, 25);
             this.label2.TabIndex = 1;
@@ -56,12 +58,12 @@
             // txtInformation
             // 
             this.txtInformation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInformation.Location = new System.Drawing.Point(453, 49);
+            this.txtInformation.Location = new System.Drawing.Point(453, 52);
             this.txtInformation.Multiline = true;
             this.txtInformation.Name = "txtInformation";
             this.txtInformation.ReadOnly = true;
             this.txtInformation.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtInformation.Size = new System.Drawing.Size(371, 307);
+            this.txtInformation.Size = new System.Drawing.Size(371, 304);
             this.txtInformation.TabIndex = 2;
             // 
             // label1
@@ -98,7 +100,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(16, 21);
+            this.label5.Location = new System.Drawing.Point(213, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 25);
             this.label5.TabIndex = 6;
@@ -138,9 +140,9 @@
             // 
             this.lblObjectName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblObjectName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblObjectName.Location = new System.Drawing.Point(45, 52);
+            this.lblObjectName.Location = new System.Drawing.Point(127, 52);
             this.lblObjectName.Name = "lblObjectName";
-            this.lblObjectName.Size = new System.Drawing.Size(385, 60);
+            this.lblObjectName.Size = new System.Drawing.Size(303, 60);
             this.lblObjectName.TabIndex = 10;
             this.lblObjectName.Text = "ObjectName";
             // 
@@ -170,11 +172,33 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 25);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Action ID";
+            // 
+            // lblActionId
+            // 
+            this.lblActionId.AutoSize = true;
+            this.lblActionId.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActionId.Location = new System.Drawing.Point(31, 61);
+            this.lblActionId.Name = "lblActionId";
+            this.lblActionId.Size = new System.Drawing.Size(53, 37);
+            this.lblActionId.TabIndex = 10;
+            this.lblActionId.Text = "00";
+            // 
             // frmAuditResultDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 406);
+            this.Controls.Add(this.lblActionId);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblObjectName);
             this.Controls.Add(this.groupBox1);
@@ -210,5 +234,7 @@
         private System.Windows.Forms.Label lblObjectName;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblActionId;
     }
 }
